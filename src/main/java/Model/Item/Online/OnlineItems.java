@@ -1,9 +1,10 @@
 package Model.Item.Online;
 
 import Model.Item.ItemsInGame;
-import Model.Mairo.Mario;
+import Model.Mario.Mario;
+import Model.Object.PackItems;
 
-public abstract class OnlineItems extends ItemsInGame {
+public abstract class OnlineItems extends ItemsInGame implements PackItems {
 
 
     public abstract void action(Mario mario);

@@ -1,16 +1,38 @@
-package Model.Object;
+package Model.OnlineStorePack;
+
+import Model.Item.Currency;
+import Model.Item.Online.OnlineItems;
+import Model.Mario.Online.OnlineWeapon;
+import Model.Object.PackItems;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
-public class StoreLimit {
+public class Pack {
 
+    public ArrayList<PackItems> packItems;
+    private int price;
+    private Currency currency;
     private int count;
     private int countPerUser;
     private int level;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private boolean isUnitDiamond;// If False it is Coin.
 
+    public Pack(ArrayList<PackItems> packItems, int price) {
+        this.price = price;
+        this.packItems = packItems;
+    }
+
+    // Set These When Creating Pack in Server and Sends it to Clients.
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
 
     public int getCount() {
         return count;
@@ -52,18 +74,11 @@ public class StoreLimit {
         this.endTime = endTime;
     }
 
-    public boolean isUnitDiamond() {
-        return isUnitDiamond;
+    public int getPrice() {
+        return price;
     }
 
-    public void setUnitDiamond(boolean unitDiamond) {
-        isUnitDiamond = unitDiamond;
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
-/*
-
-setStartTime(LocalDateTime.of(2023, 7, 1, 0, 0)); // Available from July 1, 2023, 00:00:00
-setEndTime(LocalDateTime.of(2023, 7, 31, 23, 59)); // Available until July 31, 2023, 23:59:00
-LocalDateTime now = LocalDateTime.now();
-
- */

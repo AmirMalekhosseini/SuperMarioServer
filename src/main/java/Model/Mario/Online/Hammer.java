@@ -1,29 +1,44 @@
-package Model.Mairo.Online;
+package Model.Mario.Online;
 
-import Model.Mairo.Mario;
+import Model.Mario.Mario;
 import MyProject.MyProjectData;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class SpeedBomb extends OnlineWeapon{
+public class Hammer extends OnlineWeapon {
 
 
     private final BufferedImage background;
+    private final BufferedImage backgroundFilliped;
     private int x;
     private int y;
     private int XEndPosition;
     private int XStartPosition;
     private int height = 50;
-    private int width = 70;
+    private int width = 120;
     private int velocity;
     private int secondCounter = 0;
-    private boolean isMarioThrewBomb;
+    private boolean isHammerChangeDirection;
+    private boolean isMarioThrewHammer;
     private int damage = 5;// ToDo.
 
-    public SpeedBomb(int x, int y) {
+    public Hammer(int x, int y) {
 
-        background = MyProjectData.getProjectData().getSpeedBomb();
+        background = MyProjectData.getProjectData().getHammer();
+        backgroundFilliped = MyProjectData.getProjectData().getHammerFilliped();
+        this.setSize(width, height);
+        this.x = x;
+        this.y = y;
+
+    }
+
+    public Hammer(int x, int y,Boolean isForStore) {
+
+        background = MyProjectData.getProjectData().getHammer();
+        backgroundFilliped = MyProjectData.getProjectData().getHammerFilliped();
+        width = 80;
+        height = 50;
         this.setSize(width, height);
         this.x = x;
         this.y = y;
@@ -36,23 +51,34 @@ public class SpeedBomb extends OnlineWeapon{
         // ToDo: Check this.
         secondCounter++;
         if (secondCounter == 5) {
-            if (getMarioVelocity() > 0) {
-                velocity = 30;
-                XStartPosition = x - 10;
-                XEndPosition = x + 600;
-            } else {
-                velocity = -30;
-                XStartPosition = x + 10;
-                XEndPosition = x - 600;
+            if (!isHammerChangeDirection) {
+                if (getMarioVelocity() > 0) {
+                    velocity = 30;
+                    XStartPosition = x - 10;
+                    XEndPosition = x + 600;
+                } else {
+                    velocity = -30;
+                    XStartPosition = x + 10;
+                    XEndPosition = x - 600;
+                }
+                isHammerChangeDirection = true;
             }
 
-            if (getMarioVelocity() > 0) {// Mario Throws Bomb in positive direction:
+            if (getMarioVelocity() > 0) {// Mario Throws Sword in positive direction:
                 if (x <= XEndPosition) {
                     x += velocity;
+                } else if (!isHammerChangeDirection) {
+                    velocity = -velocity;
+                    x += velocity;
+                    isHammerChangeDirection = true;
                 }
             } else {
                 if (x >= XEndPosition) {
                     x += velocity;
+                } else if (!isHammerChangeDirection) {
+                    velocity = -velocity;
+                    x += velocity;
+                    isHammerChangeDirection = true;
                 }
             }
             secondCounter = 0;
@@ -63,7 +89,11 @@ public class SpeedBomb extends OnlineWeapon{
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         Graphics2D graphics2D = (Graphics2D) graphics;
-        graphics2D.drawImage(background, -0, -0, width, height, null);
+        if (velocity >= 0) {
+            graphics2D.drawImage(background, -0, -0,width,height, null);
+        } else {
+            graphics2D.drawImage(backgroundFilliped, -0, -0,width,height, null);
+        }
     }
 
     @Override
@@ -134,12 +164,20 @@ public class SpeedBomb extends OnlineWeapon{
         this.velocity = velocity;
     }
 
-    public boolean isMarioThrewBomb() {
-        return isMarioThrewBomb;
+    public boolean isHammerChangeDirection() {
+        return isHammerChangeDirection;
     }
 
-    public void setMarioThrewBomb(boolean marioThrewBomb) {
-        isMarioThrewBomb = marioThrewBomb;
+    public void setHammerChangeDirection(boolean hammerChangeDirection) {
+        isHammerChangeDirection = hammerChangeDirection;
+    }
+
+    public boolean isMarioThrewHammer() {
+        return isMarioThrewHammer;
+    }
+
+    public void setMarioThrewHammer(boolean marioThrewHammer) {
+        isMarioThrewHammer = marioThrewHammer;
     }
 
     @Override

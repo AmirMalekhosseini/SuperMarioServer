@@ -1,4 +1,4 @@
-package Model.Mairo;
+package Model.Mario;
 
 import MyProject.MyProjectData;
 

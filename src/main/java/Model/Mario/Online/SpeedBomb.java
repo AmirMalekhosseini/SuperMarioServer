@@ -1,12 +1,12 @@
-package Model.Mairo.Online;
+package Model.Mario.Online;
 
-import Model.Mairo.Mario;
+import Model.Mario.Mario;
 import MyProject.MyProjectData;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class DamageBomb extends OnlineWeapon {
+public class SpeedBomb extends OnlineWeapon{
 
 
     private final BufferedImage background;
@@ -21,9 +21,9 @@ public class DamageBomb extends OnlineWeapon {
     private boolean isMarioThrewBomb;
     private int damage = 5;// ToDo.
 
-    public DamageBomb(int x, int y) {
+    public SpeedBomb(int x, int y) {
 
-        background = MyProjectData.getProjectData().getDamageBomb();
+        background = MyProjectData.getProjectData().getSpeedBomb();
         this.setSize(width, height);
         this.x = x;
         this.y = y;

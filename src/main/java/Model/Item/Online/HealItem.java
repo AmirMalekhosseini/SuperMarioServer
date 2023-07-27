@@ -1,6 +1,6 @@
 package Model.Item.Online;
 
-import Model.Mairo.Mario;
+import Model.Mario.Mario;
 import MyProject.MyProjectData;
 
 import java.awt.*;

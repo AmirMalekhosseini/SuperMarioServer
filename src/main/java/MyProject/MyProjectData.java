@@ -36,6 +36,7 @@ public class MyProjectData {
     protected BufferedImage castle;
     protected BufferedImage checkPoint;
     protected BufferedImage coin;
+    protected BufferedImage diamond;
     protected BufferedImage mushroom;
     protected BufferedImage star;
     protected BufferedImage flowerItem;
@@ -132,6 +133,15 @@ public class MyProjectData {
             String pathBackground = "Item/Coin.png";
             File fileBackground = new File(pathBackground);
             coin = ImageIO.read(fileBackground);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            String pathBackground = "Item/Online/Diamond.png";
+            File fileBackground = new File(pathBackground);
+            diamond = ImageIO.read(fileBackground);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -525,6 +535,9 @@ public class MyProjectData {
         return checkPoint;
     }
 
+    public BufferedImage getDiamond() {
+        return diamond;
+    }
     public BufferedImage getHealPotion() {
         return healPotion;
     }
