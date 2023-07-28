@@ -6,23 +6,25 @@ import Model.Item.Online.SpeedItem;
 import Model.Mario.Online.DamageBomb;
 import Model.Mario.Online.Hammer;
 import Model.Mario.Online.SpeedBomb;
-import Model.Object.StoreButton;
+import Model.Object.StoreSubmitButton;
 import Model.OnlineStorePack.MultiPackButton;
 import MyProject.MyProjectData;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class StoreFrame extends JFrame {
 
 
-    protected StoreButton healPotionButton;
-    protected StoreButton speedPotionButton;
-    protected StoreButton invisiblePotionButton;
-    protected StoreButton hammerButton;
-    protected StoreButton damageBombButton;
-    protected StoreButton speedBombButton;
-    protected StoreButton multiPackButton;
+    protected ArrayList<MultiPackButton> multiPackButtons = new ArrayList<>();
+    protected StoreSubmitButton healPotionButton;
+    protected StoreSubmitButton speedPotionButton;
+    protected StoreSubmitButton invisiblePotionButton;
+    protected StoreSubmitButton hammerButton;
+    protected StoreSubmitButton damageBombButton;
+    protected StoreSubmitButton speedBombButton;
+    protected StoreSubmitButton multiPackButton;
     protected HealItem healPotionLabel;
     protected InvisibleItem invisiblePotionLabel;
     protected SpeedItem speedPotionLabel;
@@ -31,12 +33,13 @@ public class StoreFrame extends JFrame {
     protected SpeedBomb speedBomb;
     protected JPanel panel;
     protected JButton backButton;
-    protected MultiPackButton addHealButton;
-    protected MultiPackButton addSpeedButton;
-    protected MultiPackButton addInvisibleButton;
-    protected MultiPackButton addDamageBombButton;
-    protected MultiPackButton addSpeedBombButton;
-    protected MultiPackButton addHammerButton;
+    protected MultiPackButton healAddButton;
+    protected MultiPackButton speedAddButton;
+    protected MultiPackButton invisibleAddButton;
+    protected MultiPackButton damageBombAddButton;
+    protected MultiPackButton speedBombAddButton;
+    protected MultiPackButton hammerAddButton;
+    private int currentPackIndex = 0;
 
     public StoreFrame() {
         super("Store Frame");
@@ -63,6 +66,7 @@ public class StoreFrame extends JFrame {
         panel.add(backButton);
 
         init();
+        addInitPacks();
         addMultiPack();
         addButtonAction();
 
@@ -70,42 +74,59 @@ public class StoreFrame extends JFrame {
 
     private void init() {
 
-        healPotionButton = new StoreButton(900, 30, panel);
-        speedPotionButton = new StoreButton(900, 130, panel);
-        invisiblePotionButton = new StoreButton(900, 230, panel);
-        hammerButton = new StoreButton(900, 330, panel);
-        damageBombButton = new StoreButton(900, 430, panel);
-        speedBombButton = new StoreButton(900, 530, panel);
-        multiPackButton = new StoreButton(850, 750, panel);
+        healPotionButton = new StoreSubmitButton(910, 60, currentPackIndex, panel);
+        currentPackIndex++;
+        speedPotionButton = new StoreSubmitButton(910, 160, currentPackIndex, panel);
+        currentPackIndex++;
+        invisiblePotionButton = new StoreSubmitButton(910, 260, currentPackIndex, panel);
+        currentPackIndex++;
+        hammerButton = new StoreSubmitButton(910, 360, currentPackIndex, panel);
+        currentPackIndex++;
+        damageBombButton = new StoreSubmitButton(910, 460, currentPackIndex, panel);
+        currentPackIndex++;
+        speedBombButton = new StoreSubmitButton(910, 560, currentPackIndex, panel);
+        currentPackIndex++;
+        multiPackButton = new StoreSubmitButton(880, 780, currentPackIndex, panel);
 
-        healPotionLabel = new HealItem(100, 20);
+        healPotionLabel = new HealItem(10, 50);
         panel.add(healPotionLabel);
 
-        speedPotionLabel = new SpeedItem(100, 120);
+        speedPotionLabel = new SpeedItem(10, 150);
         panel.add(speedPotionLabel);
 
-        invisiblePotionLabel = new InvisibleItem(100, 220);
+        invisiblePotionLabel = new InvisibleItem(10, 250);
         panel.add(invisiblePotionLabel);
 
-        hammer = new Hammer(85, 320, true);
+        hammer = new Hammer(-5, 350, true);
         panel.add(hammer);
 
-        damageBomb = new DamageBomb(85, 420);
+        damageBomb = new DamageBomb(0, 450);
         panel.add(damageBomb);
 
-        speedBomb = new SpeedBomb(85, 520);
+        speedBomb = new SpeedBomb(0, 550);
         panel.add(speedBomb);
 
     }
 
     private void addMultiPack() {
 
-        addHealButton = new MultiPackButton(100, 670, new HealItem(100, 600), panel);
-        addSpeedButton = new MultiPackButton(250, 670, new SpeedItem(250, 600), panel);
-        addInvisibleButton = new MultiPackButton(400, 670, new InvisibleItem(400, 600), panel);
-        addDamageBombButton = new MultiPackButton(550, 670, new DamageBomb(550, 600), panel);
-        addSpeedBombButton = new MultiPackButton(700, 670, new SpeedBomb(700, 600), panel);
-        addHammerButton = new MultiPackButton(850, 670, new Hammer(850, 600, true), panel);
+        healAddButton = new MultiPackButton(80, 700, new HealItem(80, 630), panel, multiPackButton);
+        speedAddButton = new MultiPackButton(230, 700, new SpeedItem(230, 630), panel, multiPackButton);
+        invisibleAddButton = new MultiPackButton(380, 700, new InvisibleItem(380, 630), panel, multiPackButton);
+        damageBombAddButton = new MultiPackButton(530, 700, new DamageBomb(530, 630), panel, multiPackButton);
+        speedBombAddButton = new MultiPackButton(680, 700, new SpeedBomb(680, 630), panel, multiPackButton);
+        hammerAddButton = new MultiPackButton(830, 700, new Hammer(830, 630, true), panel, multiPackButton);
+
+    }
+
+    private void addInitPacks() {
+
+        healPotionButton.packItems.add(new HealItem(0, 0));
+        speedPotionButton.packItems.add(new SpeedItem(0, 0));
+        invisiblePotionButton.packItems.add(new InvisibleItem(0, 0));
+        hammerButton.packItems.add(new Hammer(0, 0));
+        damageBombButton.packItems.add(new DamageBomb(0, 0));
+        speedBombButton.packItems.add(new SpeedBomb(0, 0));
 
     }
 

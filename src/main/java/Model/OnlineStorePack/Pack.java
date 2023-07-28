@@ -18,6 +18,7 @@ public class Pack {
     private int level;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    private int packIndex;
 
     public Pack(ArrayList<PackItems> packItems, int price) {
         this.price = price;
@@ -80,5 +81,13 @@ public class Pack {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getPackIndex() {
+        return packIndex;
+    }
+
+    public void setPackIndex(int packIndex) {
+        this.packIndex = packIndex;
     }
 }

@@ -55,4 +55,11 @@ public class StoreMessageField extends JTextField {
         });
     }
 
+    public String getPlaceholderText() {
+        return placeholderText;
+    }
+
+    public void setPlaceholderText(String placeholderText) {
+        this.placeholderText = placeholderText;
+    }
 }

@@ -1,25 +1,31 @@
 package Model.Object;
 
+import MyProject.MyProject;
 import MyProject.MyProjectData;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
-public class StoreButton extends JButton {
+public class StoreSubmitButton extends JButton {
 
 
+    public ArrayList<PackItems> packItems = new ArrayList<>();
     private int x;
     private int y;
-    protected StoreMessageField count;
-    protected StoreMessageField countPerUser;
-    protected StoreMessageField startTime;
-    protected StoreMessageField endTime;
-    protected StoreMessageField unit;
-    protected StoreMessageField level;
+    private int packIndex;
+    public StoreMessageField count;
+    public StoreMessageField countPerUser;
+    public StoreMessageField startTime;
+    public StoreMessageField endTime;
+    public StoreMessageField unit;
+    public StoreMessageField level;
+    public StoreMessageField price;
 
-    public StoreButton(int x, int y, JPanel panel) {
+    public StoreSubmitButton(int x, int y, int packIndex, JPanel panel) {
         this.x = x;
         this.y = y;
+        this.packIndex = packIndex;
         setBounds(x, y, 70, 40);
         setFont(MyProjectData.getProjectData().getFont10());
         setBackground(Color.BLACK);
@@ -27,6 +33,7 @@ public class StoreButton extends JButton {
         setText("Submit");
         setFocusable(false);
         addMessageFields(panel, x);
+        addAction();
         panel.add(this);
     }
 
@@ -69,6 +76,20 @@ public class StoreButton extends JButton {
         level = new StoreMessageField("Level", xField, yField);
         panel.add(level);
 
+        // Add Price Message Field:
+        xField = xField - 120;
+        yField = y;
+        price = new StoreMessageField("Price", xField, yField);
+        panel.add(price);
+
+    }
+
+    private void addAction() {
+
+        addActionListener(e -> {
+            MyProject.getInstance().storePackCreator.createPack(this);
+        });
+
     }
 
     @Override
@@ -89,4 +110,11 @@ public class StoreButton extends JButton {
         this.y = y;
     }
 
+    public int getPackIndex() {
+        return packIndex;
+    }
+
+    public void setPackIndex(int packIndex) {
+        this.packIndex = packIndex;
+    }
 }

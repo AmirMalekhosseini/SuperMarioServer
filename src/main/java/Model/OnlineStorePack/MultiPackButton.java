@@ -2,6 +2,7 @@ package Model.OnlineStorePack;
 
 import Model.Object.ObjectsInGame;
 import Model.Object.PackItems;
+import Model.Object.StoreSubmitButton;
 import MyProject.MyProjectData;
 import javax.swing.*;
 import java.awt.*;
@@ -10,10 +11,10 @@ public class MultiPackButton extends JButton {
 
     private int x;
     private int y;
-    private PackItems storeItem;
+    private PackItems packItem;
     private boolean isItemChoose;
 
-    public MultiPackButton(int x, int y, PackItems storeItem, JPanel panel) {
+    public MultiPackButton(int x, int y, PackItems packItem, JPanel panel, StoreSubmitButton storeSubmitButton) {
         this.x = x;
         this.y = y;
         setBounds(x, y, 70, 40);
@@ -22,14 +23,14 @@ public class MultiPackButton extends JButton {
         setForeground(Color.WHITE);
         setText("add");
         setFocusable(false);
-        addAction();
+        addAction(storeSubmitButton);
         panel.add(this);
-        this.storeItem = storeItem;
-        panel.add((ObjectsInGame) storeItem);
+        this.packItem = packItem;
+        panel.add((ObjectsInGame) packItem);
 
     }
 
-    private void addAction() {
+    private void addAction(StoreSubmitButton storeSubmitButton) {
 
         addActionListener(e -> {
 
@@ -37,11 +38,13 @@ public class MultiPackButton extends JButton {
                 setBackground(Color.green);
                 setText("add");
                 setFont(MyProjectData.getProjectData().getFont15());
+                storeSubmitButton.packItems.remove(packItem);
                 isItemChoose = false;
             } else {
                 setBackground(Color.red);
                 setText("remove");
                 setFont(MyProjectData.getProjectData().getFont10());
+                storeSubmitButton.packItems.add(packItem);
                 isItemChoose = true;
             }
 
@@ -49,12 +52,12 @@ public class MultiPackButton extends JButton {
 
     }
 
-    public PackItems getStoreItem() {
-        return storeItem;
+    public PackItems getPackItem() {
+        return packItem;
     }
 
-    public void setStoreItem(PackItems storeItem) {
-        this.storeItem = storeItem;
+    public void setPackItem(PackItems packItem) {
+        this.packItem = packItem;
     }
 
     @Override
