@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35686079-aa68-48dc-9bb6-42b26fdacf29" name="Changes" comment="Working on Online Shop">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/OnlineStorePack/StorePackCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/OnlineStorePack/StorePackSender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/MyProject/MyProject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Item/Online/Diamond.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Item/Online/Diamond.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Object/PackItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Object/PackItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Object/StoreButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Object/StoreSubmitButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Object/StoreMessageField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Object/StoreMessageField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/OnlineStorePack/MultiPackButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/OnlineStorePack/MultiPackButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/OnlineStorePack/Pack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/OnlineStorePack/Pack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/StoreFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/StoreFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +27,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
