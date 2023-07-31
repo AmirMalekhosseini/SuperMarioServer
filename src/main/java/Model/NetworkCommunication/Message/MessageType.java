@@ -1,5 +1,6 @@
 package Model.NetworkCommunication.Message;
 
+
 public enum MessageType {
 
     SIGN_IN,

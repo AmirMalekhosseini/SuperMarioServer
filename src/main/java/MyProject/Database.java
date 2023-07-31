@@ -1,5 +1,6 @@
 package MyProject;
 
+import Controller.NetworkCommunication.MessageHandlerCreator;
 import Model.Game.OnlineUser;
 import Model.NetworkCommunication.ClientHandler;
 import Model.NetworkCommunication.Message.Message;
@@ -14,7 +15,6 @@ public class Database {
 
     private Map<String, OnlineUser> allUsers;
     private Map<String, ClientHandler> clientHandlersMap;
-    private Map<String, ClientHandler> onlineClientsMap;
     private Map<ClientHandler, BlockingQueue<Message>> messageQueueMap;
     private Map<MessageType, MessageHandler> messageHandlerMap;
 
@@ -22,9 +22,8 @@ public class Database {
 
         allUsers = new ConcurrentHashMap<>();
         clientHandlersMap = new ConcurrentHashMap<>();
-        onlineClientsMap = new ConcurrentHashMap<>();
         messageQueueMap = new ConcurrentHashMap<>();
-        messageHandlerMap = new ConcurrentHashMap<>();
+        messageHandlerMap = MessageHandlerCreator.getInstance().createMessageHandler();
 
     }
 
@@ -35,14 +34,6 @@ public class Database {
 
     public void setClientHandlersMap(Map<String, ClientHandler> clientHandlersMap) {
         this.clientHandlersMap = clientHandlersMap;
-    }
-
-    public Map<String, ClientHandler> getOnlineClientsMap() {
-        return onlineClientsMap;
-    }
-
-    public void setOnlineClientsMap(Map<String, ClientHandler> onlineClientsMap) {
-        this.onlineClientsMap = onlineClientsMap;
     }
 
     public Map<MessageType, MessageHandler> getMessageHandlerMap() {

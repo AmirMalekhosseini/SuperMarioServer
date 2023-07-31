@@ -28,11 +28,18 @@ public class Server {
         ServerSocket serverSocket = new ServerSocket(PORT);
 
         while (true) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             Socket clientSocket = serverSocket.accept();
 
             // Create a new thread to handle the client
             ClientHandler clientHandler = new ClientHandler(clientSocket);
-            MyProject.getInstance().getDatabase().getClientHandlersMap().put(clientHandler.getUsername(), clientHandler);
+            // Set ClientHandler Username after SignIn.
+            MyProject.getInstance().getDatabase().getClientHandlersMap().put("", clientHandler);
+
         }
 
     }

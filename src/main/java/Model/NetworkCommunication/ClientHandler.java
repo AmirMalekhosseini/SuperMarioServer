@@ -1,6 +1,8 @@
 package Model.NetworkCommunication;
 
 import Model.NetworkCommunication.Message.Message;
+import Model.NetworkCommunication.MessageHandler.MessageHandler;
+import MyProject.MyProject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
@@ -11,11 +13,12 @@ import java.util.Scanner;
 
 public class ClientHandler extends Thread {
 
+    private final ObjectMapper objectMapper;
     private final Socket socket;
     private final Scanner receiver;
     private final PrintWriter sender;
     private String username;
-    private final ObjectMapper objectMapper;
+    private volatile boolean isClientOnline;
 
     public ClientHandler(Socket clientSocket) throws IOException {
 
@@ -25,19 +28,16 @@ public class ClientHandler extends Thread {
         objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
-        // Read the username sent by the client
-        try {
-            username = receiver.nextLine();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        isClientOnline = true;
+        // Start Receiving Thread
+        start();
     }
 
     @Override
     public void run() {
         try {
             // Read Messages from the Client:
-            while (true) {
+            while (isClientOnline) {
                 String receivedJson = receiver.nextLine();
                 if (receivedJson == null) {
                     break;
@@ -52,6 +52,7 @@ public class ClientHandler extends Thread {
 
             // Client Disconnected:
             socket.close();
+            MyProject.getInstance().getDatabase().getClientHandlersMap().remove(username);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,13 +60,14 @@ public class ClientHandler extends Thread {
 
     // Method to process the received message based on its type
     private void processMessage(Message message) {
-        // Add logic here to handle different types of messages
-        // For example,switch statement based on the message type
+        MessageHandler handler = MyProject.getInstance().getDatabase().getMessageHandlerMap().get(message.getMessageType());
+        handler.handleMessage(message);
     }
 
     // Method to send a message to the client
     public synchronized void sendMessage(Message message) throws IOException {
         String jsonString = JsonUtils.serializeToJson(message);
+        System.out.println("send:  "+jsonString);
         sender.println(jsonString);
     }
 
@@ -87,5 +89,13 @@ public class ClientHandler extends Thread {
 
     public synchronized ObjectMapper getObjectMapper() {
         return objectMapper;
+    }
+
+    public synchronized boolean isClientOnline() {
+        return isClientOnline;
+    }
+
+    public synchronized void setClientOnline(boolean clientOnline) {
+        isClientOnline = clientOnline;
     }
 }

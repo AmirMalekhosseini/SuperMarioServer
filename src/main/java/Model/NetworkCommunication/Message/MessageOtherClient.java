@@ -4,19 +4,13 @@ import Model.Game.OnlineUser;
 
 public class MessageOtherClient extends Message {
 
+    private String receiverUser;
 
-    private OnlineUser receiverUser;
-
-    public MessageOtherClient(OnlineUser senderUser, OnlineUser receiverUser) {
-        super(senderUser);
-        this.receiverUser = receiverUser;
-    }
-
-    public OnlineUser getReceiverUser() {
+    public String getReceiverUser() {
         return receiverUser;
     }
 
-    public void setReceiverUser(OnlineUser receiverUser) {
+    public void setReceiverUser(String receiverUser) {
         this.receiverUser = receiverUser;
     }
 }
