@@ -87,7 +87,7 @@ public class StoreSubmitButton extends JButton {
     private void addAction() {
 
         addActionListener(e -> {
-            MyProject.getInstance().storePackCreator.createPack(this);
+            MyProject.getInstance().getDatabase().storePackCreator.createPack(this);
         });
 
     }

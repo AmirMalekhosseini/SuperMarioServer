@@ -10,14 +10,10 @@ public class MyProject {
     private static MyProject myProject;
 
     private Database database;
-    public ArrayList<Pack> packs;
-    public StorePackCreator storePackCreator;
     public StorePackSender storePackSender;
 
     private MyProject() {
         database = new Database();
-        packs = new ArrayList<>();
-        storePackCreator = new StorePackCreator();
         storePackSender = new StorePackSender();
     }
 

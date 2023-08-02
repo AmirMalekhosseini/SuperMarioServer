@@ -18,9 +18,6 @@ public class SignUpHandler implements MessageHandler {
     @Override
     public void handleMessage(Message message) {
 
-
-        System.out.println(message.getMessageType());
-        System.out.println(message.getClass().getName());
         if (usernameLogic.addUser(((SignUpMessage) message).getUsername())) {// OK to Sign up
             OnlineUser newUser = new OnlineUser();
             newUser.getUserData().setUsername(((SignUpMessage) message).getUsername());
@@ -31,7 +28,6 @@ public class SignUpHandler implements MessageHandler {
 
         // Send SignUpMessage Back
         try {
-            System.out.println(MyProject.getInstance().getDatabase().getMessageHandlerMap().get(""));
             MyProject.getInstance().getDatabase().getClientHandlersMap().get("").sendMessage(message);
         } catch (IOException e) {
             throw new RuntimeException(e);

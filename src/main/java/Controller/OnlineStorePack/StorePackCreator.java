@@ -2,11 +2,19 @@ package Controller.OnlineStorePack;
 
 import Model.Item.Coin;
 import Model.Item.Online.Diamond;
+import Model.Item.Online.HealItem;
+import Model.Item.Online.InvisibleItem;
+import Model.Item.Online.SpeedItem;
+import Model.Mario.Online.DamageBomb;
+import Model.Mario.Online.Hammer;
+import Model.Mario.Online.SpeedBomb;
+import Model.Object.PackItems;
 import Model.Object.StoreSubmitButton;
 import Model.OnlineStorePack.Pack;
 import MyProject.MyProject;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class StorePackCreator {
 
@@ -20,17 +28,81 @@ public class StorePackCreator {
 
     }
 
+    public ArrayList<Pack> createInitPack() {
+
+
+        ArrayList<Pack> storePacks = new ArrayList<>();
+
+        ArrayList<PackItems> packItems = new ArrayList<>();
+        packItems.add(new Hammer(0, 0, true));
+        Pack hammerPack = new Pack(packItems, 50);
+        hammerPack.setStartTime(LocalDateTime.parse("2023-08-01T00:00:00"));
+        hammerPack.setStartTime(LocalDateTime.parse("2023-09-01T00:00:00"));
+        hammerPack.setCountPerUser(1);
+        hammerPack.setCurrency(new Diamond());
+        storePacks.add(hammerPack);
+
+        packItems = new ArrayList<>();
+        packItems.add(new DamageBomb(0, 0));
+        Pack damageBombPack = new Pack(packItems, 20);
+        damageBombPack.setStartTime(LocalDateTime.parse("2023-08-01T00:00:00"));
+        damageBombPack.setStartTime(LocalDateTime.parse("2023-09-01T00:00:00"));
+        damageBombPack.setCurrency(new Coin());
+        damageBombPack.setCount(10);
+        damageBombPack.setLevel(2);
+        storePacks.add(damageBombPack);
+
+        packItems = new ArrayList<>();
+        packItems.add(new SpeedBomb(0, 0));
+        Pack speedBombPack = new Pack(packItems, 20);
+        speedBombPack.setStartTime(LocalDateTime.parse("2023-08-01T00:00:00"));
+        speedBombPack.setStartTime(LocalDateTime.parse("2023-09-01T00:00:00"));
+        speedBombPack.setCurrency(new Coin());
+        speedBombPack.setCount(10);
+        speedBombPack.setLevel(2);
+        storePacks.add(speedBombPack);
+
+        packItems = new ArrayList<>();
+        packItems.add(new HealItem(0, 0));
+        Pack healPotionPack = new Pack(packItems, 40);
+        healPotionPack.setStartTime(LocalDateTime.parse("2023-08-01T00:00:00"));
+        healPotionPack.setStartTime(LocalDateTime.parse("2023-09-01T00:00:00"));
+        healPotionPack.setCurrency(new Coin());
+        healPotionPack.setCount(10);
+        storePacks.add(healPotionPack);
+
+        packItems = new ArrayList<>();
+        packItems.add(new InvisibleItem(0, 0));
+        Pack invisiblePotionPack = new Pack(packItems, 30);
+        invisiblePotionPack.setStartTime(LocalDateTime.parse("2023-08-01T00:00:00"));
+        invisiblePotionPack.setStartTime(LocalDateTime.parse("2023-09-01T00:00:00"));
+        invisiblePotionPack.setCurrency(new Coin());
+        invisiblePotionPack.setCount(10);
+        storePacks.add(invisiblePotionPack);
+
+        packItems = new ArrayList<>();
+        packItems.add(new SpeedItem(0, 0));
+        Pack speedPotionPack = new Pack(packItems, 25);
+        speedPotionPack.setStartTime(LocalDateTime.parse("2023-08-01T00:00:00"));
+        speedPotionPack.setStartTime(LocalDateTime.parse("2023-09-01T00:00:00"));
+        speedPotionPack.setCurrency(new Coin());
+        speedPotionPack.setCount(10);
+        storePacks.add(speedPotionPack);
+
+        return storePacks;
+    }
+
     private void setPackToList(Pack newPack) {
-        if (newPack.getPackIndex() < MyProject.getInstance().packs.size()) {
+        if (newPack.getPackIndex() < MyProject.getInstance().getDatabase().getPacks().size()) {
             // Index already exists, set the object at the desired index:
-            MyProject.getInstance().packs.set(newPack.getPackIndex(), newPack);
+            MyProject.getInstance().getDatabase().getPacks().set(newPack.getPackIndex(), newPack);
         } else {
             // Index does not exist, expand the ArrayList:
-            int currentSize = MyProject.getInstance().packs.size();
+            int currentSize = MyProject.getInstance().getDatabase().getPacks().size();
             for (int i = currentSize; i < newPack.getPackIndex(); i++) {
-                MyProject.getInstance().packs.add(null);
+                MyProject.getInstance().getDatabase().getPacks().add(null);
             }
-            MyProject.getInstance().packs.add(newPack);
+            MyProject.getInstance().getDatabase().getPacks().add(newPack);
         }
     }
 

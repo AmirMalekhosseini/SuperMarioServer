@@ -1,6 +1,7 @@
 package Model.NetworkCommunication;
 
 import Model.NetworkCommunication.Message.Message;
+import Model.NetworkCommunication.Message.PackMessage;
 import Model.NetworkCommunication.MessageHandler.MessageHandler;
 import MyProject.MyProject;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,8 +18,9 @@ public class ClientHandler extends Thread {
     private final Socket socket;
     private final Scanner receiver;
     private final PrintWriter sender;
-    private String username;
+    private volatile String username = "";
     private volatile boolean isClientOnline;
+    private boolean isSentInitPack;
 
     public ClientHandler(Socket clientSocket) throws IOException {
 
@@ -37,7 +39,7 @@ public class ClientHandler extends Thread {
     public void run() {
         try {
             // Read Messages from the Client:
-            while (isClientOnline) {
+            while (isClientOnline && receiver.hasNextLine()) {
                 String receivedJson = receiver.nextLine();
                 if (receivedJson == null) {
                     break;
@@ -48,10 +50,20 @@ public class ClientHandler extends Thread {
 
                 // Process the message based on its type
                 processMessage(receivedMessage);
+
+                if (!username.equals("") && !isSentInitPack) {
+                    PackMessage packMessage = new PackMessage();
+                    packMessage.setPacks(MyProject.getInstance().getDatabase().getPacks());
+                    sendMessage(packMessage);
+                    System.out.println("Sent Init Pack");
+                    isSentInitPack = true;
+                }
+
             }
 
             // Client Disconnected:
             socket.close();
+            System.out.println("disconnected");
             MyProject.getInstance().getDatabase().getClientHandlersMap().remove(username);
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,7 +79,6 @@ public class ClientHandler extends Thread {
     // Method to send a message to the client
     public synchronized void sendMessage(Message message) throws IOException {
         String jsonString = JsonUtils.serializeToJson(message);
-        System.out.println("send:  "+jsonString);
         sender.println(jsonString);
     }
 

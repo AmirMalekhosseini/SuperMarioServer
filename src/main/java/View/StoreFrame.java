@@ -74,37 +74,37 @@ public class StoreFrame extends JFrame {
 
     private void init() {
 
-        healPotionButton = new StoreSubmitButton(910, 60, currentPackIndex, panel);
-        currentPackIndex++;
-        speedPotionButton = new StoreSubmitButton(910, 160, currentPackIndex, panel);
-        currentPackIndex++;
-        invisiblePotionButton = new StoreSubmitButton(910, 260, currentPackIndex, panel);
-        currentPackIndex++;
         hammerButton = new StoreSubmitButton(910, 360, currentPackIndex, panel);
         currentPackIndex++;
         damageBombButton = new StoreSubmitButton(910, 460, currentPackIndex, panel);
         currentPackIndex++;
         speedBombButton = new StoreSubmitButton(910, 560, currentPackIndex, panel);
         currentPackIndex++;
+        healPotionButton = new StoreSubmitButton(910, 60, currentPackIndex, panel);
+        currentPackIndex++;
+        invisiblePotionButton = new StoreSubmitButton(910, 260, currentPackIndex, panel);
+        currentPackIndex++;
+        speedPotionButton = new StoreSubmitButton(910, 160, currentPackIndex, panel);
+        currentPackIndex++;
         multiPackButton = new StoreSubmitButton(880, 780, currentPackIndex, panel);
 
-        healPotionLabel = new HealItem(10, 50);
-        panel.add(healPotionLabel);
-
-        speedPotionLabel = new SpeedItem(10, 150);
-        panel.add(speedPotionLabel);
-
-        invisiblePotionLabel = new InvisibleItem(10, 250);
-        panel.add(invisiblePotionLabel);
-
-        hammer = new Hammer(-5, 350, true);
+        hammer = new Hammer(-5, 50, true);
         panel.add(hammer);
 
-        damageBomb = new DamageBomb(0, 450);
+        damageBomb = new DamageBomb(0, 150);
         panel.add(damageBomb);
 
-        speedBomb = new SpeedBomb(0, 550);
+        speedBomb = new SpeedBomb(0, 250);
         panel.add(speedBomb);
+
+        healPotionLabel = new HealItem(10, 350);
+        panel.add(healPotionLabel);
+
+        invisiblePotionLabel = new InvisibleItem(10, 450);
+        panel.add(invisiblePotionLabel);
+
+        speedPotionLabel = new SpeedItem(10, 550);
+        panel.add(speedPotionLabel);
 
     }
 

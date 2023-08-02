@@ -28,6 +28,7 @@ public class MessageHandlerCreator {
         messageHandlerMap.put(MessageType.SHOP_MESSAGE, new ShopMessageHandler());
         messageHandlerMap.put(MessageType.CHAT_MESSAGE, new ChatMessageHandler());
         messageHandlerMap.put(MessageType.FRIEND_REQUEST, new FriendRequestHandler());
+        messageHandlerMap.put(MessageType.LOG_OUT, new LogOutHandler());
 
         // TO be Continued...
 

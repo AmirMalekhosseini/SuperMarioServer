@@ -2,7 +2,6 @@ package Controller.OnlineStorePack;
 
 import Model.Object.PackItems;
 import Model.OnlineStorePack.Pack;
-import MyProject.MyProject;
 
 public class StorePackSender {
 

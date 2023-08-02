@@ -1,11 +1,15 @@
 package MyProject;
 
 import Controller.NetworkCommunication.MessageHandlerCreator;
+import Controller.OnlineStorePack.StorePackCreator;
 import Model.Game.OnlineUser;
 import Model.NetworkCommunication.ClientHandler;
 import Model.NetworkCommunication.Message.Message;
 import Model.NetworkCommunication.Message.MessageType;
 import Model.NetworkCommunication.MessageHandler.MessageHandler;
+import Model.OnlineStorePack.Pack;
+
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,6 +21,8 @@ public class Database {
     private Map<String, ClientHandler> clientHandlersMap;
     private Map<ClientHandler, BlockingQueue<Message>> messageQueueMap;
     private Map<MessageType, MessageHandler> messageHandlerMap;
+    private ArrayList<Pack> packs;
+    public StorePackCreator storePackCreator;
 
     public Database() {
 
@@ -24,6 +30,8 @@ public class Database {
         clientHandlersMap = new ConcurrentHashMap<>();
         messageQueueMap = new ConcurrentHashMap<>();
         messageHandlerMap = MessageHandlerCreator.getInstance().createMessageHandler();
+        storePackCreator = new StorePackCreator();
+        packs = storePackCreator.createInitPack();
 
     }
 
@@ -58,5 +66,13 @@ public class Database {
 
     public void setAllUsers(Map<String, OnlineUser> allUsers) {
         this.allUsers = allUsers;
+    }
+
+    public ArrayList<Pack> getPacks() {
+        return packs;
+    }
+
+    public void setPacks(ArrayList<Pack> packs) {
+        this.packs = packs;
     }
 }
