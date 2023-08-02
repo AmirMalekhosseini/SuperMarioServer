@@ -22,6 +22,7 @@ public class MyProjectData {
     protected BufferedImage fireMario_Filliped;
     protected BufferedImage fireMario_Filliped_Mini;
 
+    protected BufferedImage bag;
     protected BufferedImage healPotion;
     protected BufferedImage speedPotion;
     protected BufferedImage invisiblePotion;
@@ -178,6 +179,15 @@ public class MyProjectData {
             String pathBackground = "Item/Star.png";
             File fileBackground = new File(pathBackground);
             star = ImageIO.read(fileBackground);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            String pathBackground = "Item/Online/Bag.png";
+            File fileBackground = new File(pathBackground);
+            bag = ImageIO.read(fileBackground);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -533,6 +543,10 @@ public class MyProjectData {
 
     public BufferedImage getCheckPoint() {
         return checkPoint;
+    }
+
+    public BufferedImage getBag() {
+        return bag;
     }
 
     public BufferedImage getDiamond() {

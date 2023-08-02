@@ -1,15 +1,14 @@
 package Model.OnlineStorePack;
 
 import Model.Item.Currency;
-import Model.Object.PackItems;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import Model.Object.PackItem;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Pack {
 
-    public ArrayList<PackItems> packItems;
+    public ArrayList<PackItem> packItems;
     private int price;
     private Currency currency;
     private int count = -1;
@@ -19,7 +18,7 @@ public class Pack {
     private LocalDateTime endTime;
     private int packIndex;
 
-    public Pack(ArrayList<PackItems> packItems, int price) {
+    public Pack(ArrayList<PackItem> packItems, int price) {
         this.price = price;
         this.packItems = packItems;
     }

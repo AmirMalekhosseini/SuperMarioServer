@@ -1,5 +1,6 @@
 package Model.Object;
 
+import Controller.OnlineStorePack.StorePackCreator;
 import MyProject.MyProject;
 import MyProject.MyProjectData;
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 public class StoreSubmitButton extends JButton {
 
 
-    public ArrayList<PackItems> packItems = new ArrayList<>();
+    public ArrayList<PackItem> packItems = new ArrayList<>();
     private int x;
     private int y;
     private int packIndex;
@@ -87,7 +88,7 @@ public class StoreSubmitButton extends JButton {
     private void addAction() {
 
         addActionListener(e -> {
-            MyProject.getInstance().getDatabase().storePackCreator.createPack(this);
+            StorePackCreator.getInstance().createPack(this);
         });
 
     }

@@ -1,8 +1,10 @@
 package Model.NetworkCommunication;
 
+import Controller.OnlineStorePack.StorePackSender;
 import Model.NetworkCommunication.Message.Message;
 import Model.NetworkCommunication.Message.PackMessage;
 import Model.NetworkCommunication.MessageHandler.MessageHandler;
+import Model.OnlineStorePack.Pack;
 import MyProject.MyProject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -52,9 +54,9 @@ public class ClientHandler extends Thread {
                 processMessage(receivedMessage);
 
                 if (!username.equals("") && !isSentInitPack) {
-                    PackMessage packMessage = new PackMessage();
-                    packMessage.setPacks(MyProject.getInstance().getDatabase().getPacks());
-                    sendMessage(packMessage);
+                    for (Pack pack : MyProject.getInstance().getDatabase().getPacks()) {
+                        StorePackSender.getInstance().sendPack(pack);
+                    }
                     System.out.println("Sent Init Pack");
                     isSentInitPack = true;
                 }

@@ -1,7 +1,7 @@
 package Model.OnlineStorePack;
 
 import Model.Object.ObjectsInGame;
-import Model.Object.PackItems;
+import Model.Object.PackItem;
 import Model.Object.StoreSubmitButton;
 import MyProject.MyProjectData;
 import javax.swing.*;
@@ -11,10 +11,10 @@ public class MultiPackButton extends JButton {
 
     private int x;
     private int y;
-    private PackItems packItem;
+    private PackItem packItem;
     private boolean isItemChoose;
 
-    public MultiPackButton(int x, int y, PackItems packItem, JPanel panel, StoreSubmitButton storeSubmitButton) {
+    public MultiPackButton(int x, int y, PackItem packItem, JPanel panel, StoreSubmitButton storeSubmitButton) {
         this.x = x;
         this.y = y;
         setBounds(x, y, 70, 40);
@@ -52,11 +52,11 @@ public class MultiPackButton extends JButton {
 
     }
 
-    public PackItems getPackItem() {
+    public PackItem getPackItem() {
         return packItem;
     }
 
-    public void setPackItem(PackItems packItem) {
+    public void setPackItem(PackItem packItem) {
         this.packItem = packItem;
     }
 

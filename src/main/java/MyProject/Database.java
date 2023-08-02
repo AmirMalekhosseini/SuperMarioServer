@@ -22,7 +22,6 @@ public class Database {
     private Map<ClientHandler, BlockingQueue<Message>> messageQueueMap;
     private Map<MessageType, MessageHandler> messageHandlerMap;
     private ArrayList<Pack> packs;
-    public StorePackCreator storePackCreator;
 
     public Database() {
 
@@ -30,8 +29,7 @@ public class Database {
         clientHandlersMap = new ConcurrentHashMap<>();
         messageQueueMap = new ConcurrentHashMap<>();
         messageHandlerMap = MessageHandlerCreator.getInstance().createMessageHandler();
-        storePackCreator = new StorePackCreator();
-        packs = storePackCreator.createInitPack();
+        packs = StorePackCreator.getInstance().createInitPack();
 
     }
 

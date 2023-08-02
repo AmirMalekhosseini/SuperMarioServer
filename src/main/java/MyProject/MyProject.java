@@ -1,20 +1,15 @@
 package MyProject;
 
-import Controller.OnlineStorePack.StorePackCreator;
 import Controller.OnlineStorePack.StorePackSender;
-import Model.OnlineStorePack.Pack;
-import java.util.ArrayList;
 
 public class MyProject {
 
     private static MyProject myProject;
 
     private Database database;
-    public StorePackSender storePackSender;
 
     private MyProject() {
         database = new Database();
-        storePackSender = new StorePackSender();
     }
 
     public static synchronized MyProject getInstance() {

@@ -6,7 +6,7 @@ import MyProject.MyProjectData;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class HealItem extends OnlineItems{
+public class HealItem extends OnlineItem {
 
     private BufferedImage background;
 

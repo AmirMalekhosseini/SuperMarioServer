@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-//        SwingUtilities.invokeLater(() -> new StoreFrame().setVisible(true));
+        SwingUtilities.invokeLater(() -> new StoreFrame().setVisible(true));
         MyProject.getInstance();
         try {
             Server.getInstance().start();

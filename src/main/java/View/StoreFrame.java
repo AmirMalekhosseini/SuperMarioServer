@@ -74,17 +74,17 @@ public class StoreFrame extends JFrame {
 
     private void init() {
 
-        hammerButton = new StoreSubmitButton(910, 360, currentPackIndex, panel);
+        hammerButton = new StoreSubmitButton(910, 60, currentPackIndex, panel);
         currentPackIndex++;
-        damageBombButton = new StoreSubmitButton(910, 460, currentPackIndex, panel);
+        damageBombButton = new StoreSubmitButton(910, 160, currentPackIndex, panel);
         currentPackIndex++;
-        speedBombButton = new StoreSubmitButton(910, 560, currentPackIndex, panel);
+        speedBombButton = new StoreSubmitButton(910, 260, currentPackIndex, panel);
         currentPackIndex++;
-        healPotionButton = new StoreSubmitButton(910, 60, currentPackIndex, panel);
+        healPotionButton = new StoreSubmitButton(910, 360, currentPackIndex, panel);
         currentPackIndex++;
-        invisiblePotionButton = new StoreSubmitButton(910, 260, currentPackIndex, panel);
+        invisiblePotionButton = new StoreSubmitButton(910, 460, currentPackIndex, panel);
         currentPackIndex++;
-        speedPotionButton = new StoreSubmitButton(910, 160, currentPackIndex, panel);
+        speedPotionButton = new StoreSubmitButton(910, 560, currentPackIndex, panel);
         currentPackIndex++;
         multiPackButton = new StoreSubmitButton(880, 780, currentPackIndex, panel);
 
