@@ -1,4 +1,4 @@
-package Model.NetworkCommunication.MessageHandler;
+package Controller.NetworkCommunication.MessageHandler;
 
 import Model.NetworkCommunication.ClientHandler;
 import Model.NetworkCommunication.Message.LogOutMessage;

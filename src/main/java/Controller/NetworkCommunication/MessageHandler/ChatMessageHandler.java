@@ -1,8 +1,8 @@
-package Model.NetworkCommunication.MessageHandler;
+package Controller.NetworkCommunication.MessageHandler;
 
 import Model.NetworkCommunication.Message.Message;
 
-public class ShopMessageHandler implements MessageHandler{
+public class ChatMessageHandler implements MessageHandler{
     @Override
     public void handleMessage(Message message) {
     }

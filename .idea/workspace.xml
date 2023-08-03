@@ -5,25 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35686079-aa68-48dc-9bb6-42b26fdacf29" name="Changes" comment="Try to Fix Store Bug">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ClassUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/BagItemHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/ChooseBagHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Item/Online/Bag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/BagItemMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/ChooseBagMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/OnlineStorePack/StorePackCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/OnlineStorePack/StorePackCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/OnlineStorePack/StorePackSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/OnlineStorePack/StorePackSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Item/Online/HealItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Item/Online/HealItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Item/Online/InvisibleItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Item/Online/InvisibleItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Item/Online/OnlineItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Item/Online/OnlineItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Item/Online/SpeedItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Item/Online/SpeedItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Mario/Online/OnlineWeapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Mario/Online/OnlineWeapon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandlerCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/MessageHandlerCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game/OnlineUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Game/OnlineUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/PackMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/PackMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Object/PackItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Object/PackItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Object/StoreSubmitButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Object/StoreSubmitButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/OnlineStorePack/MultiPackButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/OnlineStorePack/MultiPackButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/OnlineStorePack/Pack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/OnlineStorePack/Pack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/MessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/SignInMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/SignInMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/MessageHandler/ChatMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/ChatMessageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/MessageHandler/FriendRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/FriendRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/MessageHandler/LogOutHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/LogOutHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/MessageHandler/MessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/MessageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/MessageHandler/ShopMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/ShopMessageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/MessageHandler/SignInHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/SignInHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/MessageHandler/SignUpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/SignUpHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MyProject/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MyProject/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MyProject/MyProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MyProject/MyProject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MyProject/MyProjectData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MyProject/MyProjectData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/StoreFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/StoreFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,11 +94,11 @@
       <recent name="F:\Computer Programming\My Programs\Java\AP\SuperMarioServer\src\main\java\Model\Mairo" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Controller.NetworkCommunication.MessageHandler" />
       <recent name="Model.NetworkCommunication.Message" />
-      <recent name="Controller.NetworkCommunication" />
-      <recent name="Controller.Menu" />
-      <recent name="Model.Game" />
+      <recent name="Controller" />
       <recent name="Model.Item.Online" />
+      <recent name="Controller.NetworkCommunication" />
     </key>
   </component>
   <component name="RunManager">

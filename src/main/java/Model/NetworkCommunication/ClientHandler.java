@@ -2,8 +2,7 @@ package Model.NetworkCommunication;
 
 import Controller.OnlineStorePack.StorePackSender;
 import Model.NetworkCommunication.Message.Message;
-import Model.NetworkCommunication.Message.PackMessage;
-import Model.NetworkCommunication.MessageHandler.MessageHandler;
+import Controller.NetworkCommunication.MessageHandler.MessageHandler;
 import Model.OnlineStorePack.Pack;
 import MyProject.MyProject;
 import com.fasterxml.jackson.databind.ObjectMapper;

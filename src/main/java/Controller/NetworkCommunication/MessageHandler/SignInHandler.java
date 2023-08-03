@@ -1,4 +1,4 @@
-package Model.NetworkCommunication.MessageHandler;
+package Controller.NetworkCommunication.MessageHandler;
 
 import Controller.Menu.UsernameLogic;
 import Model.NetworkCommunication.ClientHandler;
@@ -26,7 +26,6 @@ public class SignInHandler implements MessageHandler {
                 signInMessage.setUsernameOK(true);
                 if (usernameLogic.checkPassword(signInMessage.getUsername(), signInMessage.getPassword())) {// Ok for Sign In
                     signInMessage.setPasswordOK(true);
-                    signInMessage.setSignedInUser(MyProject.getInstance().getDatabase().getAllUsers().get(signInMessage.getUsername()));
                     // Set ClientHandler
 
                     handler.setUsername(signInMessage.getUsername());
