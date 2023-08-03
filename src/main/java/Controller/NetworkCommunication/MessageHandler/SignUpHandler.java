@@ -7,6 +7,7 @@ import Model.NetworkCommunication.Message.SignUpMessage;
 import MyProject.MyProject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SignUpHandler implements MessageHandler {
     private final UsernameLogic usernameLogic;
@@ -23,6 +24,8 @@ public class SignUpHandler implements MessageHandler {
             newUser.getUserData().setUsername(((SignUpMessage) message).getUsername());
             newUser.getUserData().setPassword(((SignUpMessage) message).getPassword());
             MyProject.getInstance().getDatabase().getAllUsers().put(newUser.getUserData().getUsername(), newUser);
+            // Create Message Queue
+            MyProject.getInstance().getDatabase().getMessageQueueMap().put(newUser.getUserData().getUsername(), new ArrayList<>());
             ((SignUpMessage) message).setPasswordOK(true);
         }
 

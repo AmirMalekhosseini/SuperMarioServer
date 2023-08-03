@@ -2,16 +2,19 @@ package Controller.NetworkCommunication.MessageHandler;
 
 import Model.NetworkCommunication.Message.FriendRequestMessage;
 import Model.NetworkCommunication.Message.Message;
+import Model.NetworkCommunication.Message.RemoveLobbyMessage;
 import MyProject.MyProject;
 
 import java.io.IOException;
 
-public class FriendRequestHandler implements MessageHandler{
+public class RemoveLobbyHandler implements MessageHandler{
+
+
     @Override
     public void handleMessage(Message message) {
 
-        if (message instanceof FriendRequestMessage) {
-            FriendRequestMessage requestMessage = (FriendRequestMessage) message;
+        if (message instanceof RemoveLobbyMessage) {
+            RemoveLobbyMessage requestMessage = (RemoveLobbyMessage) message;
             String target = requestMessage.getTargetUser();
             // Target is Online:
             if (MyProject.getInstance().getDatabase().getClientHandlersMap().containsKey(target)) {

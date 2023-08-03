@@ -8,17 +8,15 @@ import Model.NetworkCommunication.Message.Message;
 import Model.NetworkCommunication.Message.MessageType;
 import Controller.NetworkCommunication.MessageHandler.MessageHandler;
 import Model.OnlineStorePack.Pack;
-
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Database {
 
     private Map<String, OnlineUser> allUsers;
     private Map<String, ClientHandler> clientHandlersMap;
-    private Map<String, BlockingQueue<Message>> messageQueueMap;
+    private Map<String, ArrayList<Message>> messageQueueMap;
     private Map<MessageType, MessageHandler> messageHandlerMap;
     private ArrayList<Pack> packs;
 
@@ -49,11 +47,11 @@ public class Database {
         this.messageHandlerMap = messageHandlerMap;
     }
 
-    public Map<String, BlockingQueue<Message>> getMessageQueueMap() {
+    public Map<String, ArrayList<Message>> getMessageQueueMap() {
         return messageQueueMap;
     }
 
-    public void setMessageQueueMap(Map<String, BlockingQueue<Message>> messageQueueMap) {
+    public void setMessageQueueMap(Map<String, ArrayList<Message>> messageQueueMap) {
         this.messageQueueMap = messageQueueMap;
     }
 
