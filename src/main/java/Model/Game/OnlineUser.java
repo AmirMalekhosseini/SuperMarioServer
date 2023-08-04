@@ -1,6 +1,8 @@
 package Model.Game;
 
 import Model.Item.Online.Bag;
+import Model.OnlineChat.UserChat;
+
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -10,6 +12,8 @@ public class OnlineUser {
     private UserData userData;
     // String: Item Name. // Integer: Item Count. // Item: Online Weapon and Item
     private Map<String, Integer> userOnlineItems;
+    private Map<String, ArrayList<UserChat>> userChatScreens;
+    private ArrayList<String> userFriends;
     private ArrayList<Bag> userBags;
     private Bag activeBag;
     private int activeBagIndex=-1;
@@ -17,6 +21,8 @@ public class OnlineUser {
     public OnlineUser() {
         userData = new UserData();
         userOnlineItems = new ConcurrentHashMap<>();
+        userChatScreens = new ConcurrentHashMap<>();
+        userFriends = new ArrayList<>();
         userBags = new ArrayList<>(3);
         for (int i = 0; i < 3; i++) {
             Bag bag = new Bag();
@@ -72,5 +78,21 @@ public class OnlineUser {
 
     public void setActiveBagIndex(int activeBagIndex) {
         this.activeBagIndex = activeBagIndex;
+    }
+
+    public Map<String, ArrayList<UserChat>> getUserChatScreens() {
+        return userChatScreens;
+    }
+
+    public void setUserChatScreens(Map<String, ArrayList<UserChat>> userChatScreens) {
+        this.userChatScreens = userChatScreens;
+    }
+
+    public ArrayList<String> getUserFriends() {
+        return userFriends;
+    }
+
+    public void setUserFriends(ArrayList<String> userFriends) {
+        this.userFriends = userFriends;
     }
 }

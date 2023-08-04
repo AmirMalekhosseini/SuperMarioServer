@@ -4,29 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35686079-aa68-48dc-9bb6-42b26fdacf29" name="Changes" comment="Complete Notification except Left Click">
-      <change afterPath="$PROJECT_DIR$/ServerData.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/AddAdminHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/GameRequestAnswerHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/NewLobbyMessageHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/RemoveAdminHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Game/Lobby.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/AddAdminMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/GameRequestAnswer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/NewLobbyMemberMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/NewLobbyMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/RemoveAdminMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/RemoveLobbyMemberMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/ServerData.java" afterDir="false" />
+    <list default="true" id="35686079-aa68-48dc-9bb6-42b26fdacf29" name="Changes" comment="Complete Lobby Except Chat&#10;Complete ServerData">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/OnlineChat/UserChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/MessageHandlerCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/MessageHandlerCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/RemoveLobbyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/RemoveLobbyMemberHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/GameRequestMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/GameRequestMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/ChatMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/ChatMessageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game/OnlineUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Game/OnlineUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/ChatMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/ChatMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/ChatNotificationMessage.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/RemoveLobbyMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MyProject/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MyProject/Database.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,11 +82,11 @@
       <recent name="F:\Computer Programming\My Programs\Java\AP\SuperMarioServer\src\main\java\Model" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Model.OnlineChat" />
       <recent name="Model.NetworkCommunication.Message" />
       <recent name="Controller.NetworkCommunication.MessageHandler" />
       <recent name="Controller" />
       <recent name="Model.Item.Online" />
-      <recent name="Controller.NetworkCommunication" />
     </key>
   </component>
   <component name="RunManager">
@@ -158,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691103783983</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Complete Lobby Except Chat&#10;Complete ServerData">
+      <created>1691176561612</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1691176561612</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -178,6 +171,7 @@
     <MESSAGE value="Commit before Create Network" />
     <MESSAGE value="Start to Push Project on Network" />
     <MESSAGE value="Complete Notification except Left Click" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete Notification except Left Click" />
+    <MESSAGE value="Complete Lobby Except Chat&#10;Complete ServerData" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete Lobby Except Chat&#10;Complete ServerData" />
   </component>
 </project>
