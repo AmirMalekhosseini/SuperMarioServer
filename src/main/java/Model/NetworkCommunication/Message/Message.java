@@ -15,8 +15,13 @@ import com.fasterxml.jackson.annotation.*;
         @JsonSubTypes.Type(value = ChatNotificationMessage.class, name = "CHAT_NOTIFICATION"),
         @JsonSubTypes.Type(value = FriendRequestMessage.class, name = "FRIEND_REQUEST"),
         @JsonSubTypes.Type(value = GameRequestMessage.class, name = "GAME_REQUEST"),
+        @JsonSubTypes.Type(value = GameRequestAnswer.class, name = "GAME_REQUEST_ANSWER"),
         @JsonSubTypes.Type(value = NewItemMessage.class, name = "NEW_ITEM_MESSAGE"),
-        @JsonSubTypes.Type(value = RemoveLobbyMessage.class, name = "REMOVE_LOBBY_MESSAGE"),
+        @JsonSubTypes.Type(value = NewLobbyMessage.class, name = "NEW_LOBBY_MESSAGE"),
+        @JsonSubTypes.Type(value = NewLobbyMemberMessage.class, name = "NEW_LOBBY_MEMBER"),
+        @JsonSubTypes.Type(value = RemoveLobbyMemberMessage.class, name = "REMOVE_LOBBY_MEMBER"),
+        @JsonSubTypes.Type(value = AddAdminMessage.class, name = "ADD_ADMIN_MESSAGE"),
+        @JsonSubTypes.Type(value = RemoveAdminMessage.class, name = "REMOVE_ADMIN_MESSAGE"),
         // Add other subclasses with corresponding discriminator names
 })
 public class Message {

@@ -1,8 +1,6 @@
 package Model.NetworkCommunication;
 
-import MyProject.Database;
 import MyProject.MyProject;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,9 +9,10 @@ public class Server {
 
     private static Server server;
     private final int PORT = 12345;
+    private final ServerData serverData;
 
     private Server() {
-
+        serverData = new ServerData();
     }
 
     public static synchronized Server getInstance() {
@@ -42,5 +41,9 @@ public class Server {
 
         }
 
+    }
+
+    public ServerData getServerData() {
+        return serverData;
     }
 }

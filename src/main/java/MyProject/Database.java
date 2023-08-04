@@ -2,12 +2,14 @@ package MyProject;
 
 import Controller.NetworkCommunication.MessageHandler.MessageHandlerCreator;
 import Controller.OnlineStorePack.StorePackCreator;
+import Model.Game.Lobby;
 import Model.Game.OnlineUser;
 import Model.NetworkCommunication.ClientHandler;
 import Model.NetworkCommunication.Message.Message;
 import Model.NetworkCommunication.Message.MessageType;
 import Controller.NetworkCommunication.MessageHandler.MessageHandler;
 import Model.OnlineStorePack.Pack;
+
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -18,6 +20,7 @@ public class Database {
     private Map<String, ClientHandler> clientHandlersMap;
     private Map<String, ArrayList<Message>> messageQueueMap;
     private Map<MessageType, MessageHandler> messageHandlerMap;
+    private Map<String, Lobby> lobbyMap;
     private ArrayList<Pack> packs;
 
     public Database() {
@@ -26,6 +29,7 @@ public class Database {
         clientHandlersMap = new ConcurrentHashMap<>();
         messageQueueMap = new ConcurrentHashMap<>();
         messageHandlerMap = MessageHandlerCreator.getInstance().createMessageHandler();
+        lobbyMap = new ConcurrentHashMap<>();
         packs = StorePackCreator.getInstance().createInitPack();
 
     }
@@ -69,5 +73,13 @@ public class Database {
 
     public void setPacks(ArrayList<Pack> packs) {
         this.packs = packs;
+    }
+
+    public Map<String, Lobby> getLobbyMap() {
+        return lobbyMap;
+    }
+
+    public void setLobbyMap(Map<String, Lobby> lobbyMap) {
+        this.lobbyMap = lobbyMap;
     }
 }

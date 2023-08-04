@@ -30,7 +30,11 @@ public class MessageHandlerCreator {
         messageHandlerMap.put(MessageType.CHAT_MESSAGE, new ChatMessageHandler());
         messageHandlerMap.put(MessageType.FRIEND_REQUEST, new FriendRequestHandler());
         messageHandlerMap.put(MessageType.GAME_REQUEST, new GameRequestHandler());
-        messageHandlerMap.put(MessageType.REMOVE_LOBBY_MESSAGE, new RemoveLobbyHandler());
+        messageHandlerMap.put(MessageType.GAME_REQUEST_ANSWER, new GameRequestAnswerHandler());
+        messageHandlerMap.put(MessageType.NEW_LOBBY_MESSAGE, new NewLobbyMessageHandler());
+        messageHandlerMap.put(MessageType.REMOVE_LOBBY_MEMBER, new RemoveLobbyMemberHandler());
+        messageHandlerMap.put(MessageType.ADD_ADMIN_MESSAGE, new AddAdminHandler());
+        messageHandlerMap.put(MessageType.REMOVE_ADMIN_MESSAGE, new RemoveAdminHandler());
 
         // TO be Continued...
 
