@@ -1,5 +1,8 @@
 package Model.Game;
 
+
+import javax.persistence.*;
+
 public class Score {
 
     private int userScore = 0;
@@ -14,4 +17,5 @@ public class Score {
     public void setUserScore(int userScore) {
         this.userScore = userScore;
     }
+
 }

@@ -40,9 +40,11 @@ public class StorePackSender {
         packMessage.setCurrency(pack.getCurrency().getClass().getName());
 
         // Send through Server
-        // ToDo: for on all users.
         try {
-            MyProject.getInstance().getDatabase().getClientHandlersMap().get("amir").sendMessage(packMessage);
+            for (String user : MyProject.getInstance().getDatabase().getClientHandlersMap().keySet()) {
+                MyProject.getInstance().getDatabase().getClientHandlersMap().get(user).sendMessage(packMessage);
+            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

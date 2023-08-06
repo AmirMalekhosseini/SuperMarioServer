@@ -26,6 +26,10 @@ public class GameRequestAnswerHandler implements MessageHandler{
                 ArrayList<String> lobbyMembers = MyProject.getInstance().getDatabase().getLobbyMap().get(requestAnswer.getLobbyName()).getMembers();
                 // Send NewLobbyMemberMessage to all Lobby Members:
                 for (String member : lobbyMembers) {
+                    // Continue if Server Wants to send it to himself:
+                    if (member.equals(requestAnswer.getSenderUser())) {
+                        continue;
+                    }
                     try {
                         MyProject.getInstance().getDatabase().getClientHandlersMap().get(member).sendMessage(lobbyMemberMessage);
                     } catch (IOException e) {

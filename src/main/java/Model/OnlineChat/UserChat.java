@@ -1,5 +1,7 @@
 package Model.OnlineChat;
 
+import javax.persistence.Embeddable;
+
 public class UserChat {
 
     private String context;

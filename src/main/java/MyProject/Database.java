@@ -9,7 +9,6 @@ import Model.NetworkCommunication.Message.Message;
 import Model.NetworkCommunication.Message.MessageType;
 import Controller.NetworkCommunication.MessageHandler.MessageHandler;
 import Model.OnlineStorePack.Pack;
-
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

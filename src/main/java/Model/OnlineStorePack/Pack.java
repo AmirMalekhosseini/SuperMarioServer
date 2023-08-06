@@ -5,10 +5,15 @@ import Model.Object.PackItem;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Pack {
 
     public ArrayList<PackItem> packItems;
+    // String: Users that Bought the Pack.
+    // Integer: How many Times they have Bought.
+    private Map<String, Integer> countPerPersonLimit;
     private int price;
     private Currency currency;
     private int count = -1;
@@ -21,6 +26,7 @@ public class Pack {
     public Pack(ArrayList<PackItem> packItems, int price) {
         this.price = price;
         this.packItems = packItems;
+        countPerPersonLimit = new ConcurrentHashMap<>();
     }
 
     // Set These When Creating Pack in Server and Sends it to Clients.
@@ -87,5 +93,13 @@ public class Pack {
 
     public void setPackIndex(int packIndex) {
         this.packIndex = packIndex;
+    }
+
+    public Map<String, Integer> getCountPerPersonLimit() {
+        return countPerPersonLimit;
+    }
+
+    public void setCountPerPersonLimit(Map<String, Integer> countPerPersonLimit) {
+        this.countPerPersonLimit = countPerPersonLimit;
     }
 }

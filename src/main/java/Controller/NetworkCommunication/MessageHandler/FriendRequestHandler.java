@@ -13,6 +13,9 @@ public class FriendRequestHandler implements MessageHandler{
         if (message instanceof FriendRequestMessage) {
             FriendRequestMessage requestMessage = (FriendRequestMessage) message;
             String target = requestMessage.getTargetUser();
+            if (!MyProject.getInstance().getDatabase().getAllUsers().containsKey(target)) {
+                return;
+            }
             // Target is Online:
             if (MyProject.getInstance().getDatabase().getClientHandlersMap().containsKey(target)) {
                 try {

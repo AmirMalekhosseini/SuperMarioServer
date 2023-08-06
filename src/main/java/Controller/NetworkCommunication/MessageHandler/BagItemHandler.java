@@ -1,11 +1,8 @@
 package Controller.NetworkCommunication.MessageHandler;
 
-import Model.NetworkCommunication.ClientHandler;
 import Model.NetworkCommunication.Message.BagItemMessage;
 import Model.NetworkCommunication.Message.Message;
 import MyProject.MyProject;
-
-import java.io.IOException;
 
 public class BagItemHandler implements MessageHandler {
     @Override

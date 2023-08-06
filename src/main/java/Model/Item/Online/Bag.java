@@ -3,12 +3,14 @@ package Model.Item.Online;
 import Model.Object.ObjectsInGame;
 import MyProject.MyProjectData;
 
+import javax.persistence.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Bag extends ObjectsInGame {
 
+    private Long id;
     private final BufferedImage background;
     private ArrayList<String> bagItems = new ArrayList<>();
 
@@ -86,5 +88,13 @@ public class Bag extends ObjectsInGame {
     @Override
     public void setWidth(int width) {
         this.width = width;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

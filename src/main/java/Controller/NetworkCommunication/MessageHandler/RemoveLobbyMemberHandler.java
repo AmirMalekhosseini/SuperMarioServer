@@ -5,6 +5,8 @@ import Model.NetworkCommunication.Message.Message;
 import Model.NetworkCommunication.Message.RemoveLobbyMemberMessage;
 import MyProject.MyProject;
 
+import java.io.IOException;
+
 public class RemoveLobbyMemberHandler implements MessageHandler {
 
 
@@ -24,14 +26,35 @@ public class RemoveLobbyMemberHandler implements MessageHandler {
 
             if (isTargetCoAdmin(target, lobby)) {
                 if (isSenderAdmin(sender, lobby)) {
+                    try {
+                        sendRemoveMessageToMembers(target,lobbyName,removeLobbyMemberMessage);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                     lobby.getMembers().remove(target);
                 }
             } else {
+                try {
+                    sendRemoveMessageToMembers(target,lobbyName,removeLobbyMemberMessage);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 lobby.getMembers().remove(target);
             }
 
         }
 
+    }
+
+    private void sendRemoveMessageToMembers(String target, String lobbyName, RemoveLobbyMemberMessage message) throws IOException {
+        for (String member : MyProject.getInstance().getDatabase().getLobbyMap().get(lobbyName).getMembers()) {
+            if (member.equals(target)) {// If User is Removed:
+                message.setUserRemoved(true);
+                MyProject.getInstance().getDatabase().getClientHandlersMap().get(member).sendMessage(message);
+            }
+            message.setUserRemoved(false);
+            MyProject.getInstance().getDatabase().getClientHandlersMap().get(member).sendMessage(message);
+        }
     }
 
     private boolean checkSender(String sender, Lobby lobby) {

@@ -14,7 +14,9 @@ public class NewLobbyMessageHandler implements MessageHandler{
         if (message instanceof NewLobbyMessage) {
             NewLobbyMessage lobbyMessage = (NewLobbyMessage) message;
             String lobbyName = lobbyMessage.getSenderUser();
-            MyProject.getInstance().getDatabase().getLobbyMap().put(lobbyName, new Lobby(lobbyName));
+            String lobbyPassword = lobbyMessage.getPassword();
+            MyProject.getInstance().getDatabase().getLobbyMap().put(lobbyName, new Lobby(lobbyName, lobbyPassword));
+            MyProject.getInstance().getDatabase().getLobbyMap().get(lobbyName).getMembers().add(lobbyName);
         }
 
     }

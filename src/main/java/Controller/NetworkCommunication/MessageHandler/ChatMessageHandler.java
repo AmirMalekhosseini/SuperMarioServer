@@ -32,22 +32,24 @@ public class ChatMessageHandler implements MessageHandler{
 
     private void addMessages(String message, String sender, String receiver) {
 
-        UserChat chat = new UserChat();
-        chat.setContext(message);
+        UserChat otherChat = new UserChat();
+        otherChat.setContext(message);
 
         // Add for Receiver:
-        chat.setUserMessage(false);
+        otherChat.setUserMessage(false);
         if (!MyProject.getInstance().getDatabase().getAllUsers().get(receiver).getUserChatScreens().containsKey(sender)) {
             MyProject.getInstance().getDatabase().getAllUsers().get(receiver).getUserChatScreens().put(sender, new ArrayList<>());
         }
-        MyProject.getInstance().getDatabase().getAllUsers().get(receiver).getUserChatScreens().get(sender).add(chat);
+        MyProject.getInstance().getDatabase().getAllUsers().get(receiver).getUserChatScreens().get(sender).add(otherChat);
 
         // Add for Sender:
-        chat.setUserMessage(true);
+        UserChat userChat = new UserChat();
+        userChat.setContext(message);
+        userChat.setUserMessage(true);
         if (!MyProject.getInstance().getDatabase().getAllUsers().get(sender).getUserChatScreens().containsKey(receiver)) {
             MyProject.getInstance().getDatabase().getAllUsers().get(sender).getUserChatScreens().put(receiver, new ArrayList<>());
         }
-        MyProject.getInstance().getDatabase().getAllUsers().get(sender).getUserChatScreens().get(receiver).add(chat);
+        MyProject.getInstance().getDatabase().getAllUsers().get(sender).getUserChatScreens().get(receiver).add(userChat);
 
     }
 

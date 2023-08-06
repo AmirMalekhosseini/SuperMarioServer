@@ -1,13 +1,16 @@
 package Model.NetworkCommunication;
 
 import Controller.OnlineStorePack.StorePackSender;
+import Controller.Utils.JsonUtils;
+import Model.Game.OnlineUser;
+import Model.NetworkCommunication.Message.InitMessage;
 import Model.NetworkCommunication.Message.Message;
 import Controller.NetworkCommunication.MessageHandler.MessageHandler;
+import Model.NetworkCommunication.Message.MessageType;
 import Model.OnlineStorePack.Pack;
 import MyProject.MyProject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -52,11 +55,21 @@ public class ClientHandler extends Thread {
                 // Process the message based on its type
                 processMessage(receivedMessage);
 
+                // Send Init Pack:
                 if (!username.equals("") && !isSentInitPack) {
                     for (Pack pack : MyProject.getInstance().getDatabase().getPacks()) {
                         StorePackSender.getInstance().sendPack(pack);
                     }
-                    System.out.println("Sent Init Pack");
+                    // Send Init Data:
+                    OnlineUser signedInUser = MyProject.getInstance().getDatabase().getAllUsers().get(username);
+                    InitMessage initMessage = new InitMessage();
+                    initMessage.setMessageType(MessageType.INIT_MESSAGE);
+                    initMessage.setUserChatScreens(signedInUser.getUserChatScreens());
+                    initMessage.setUserFriends(signedInUser.getUserFriends());
+                    initMessage.setClientItems(signedInUser.getUserOnlineItems());
+                    initMessage.setUserData(MyProject.getInstance().getDatabase().getAllUsers().get(username).getUserData());
+                    sendMessage(initMessage);
+
                     isSentInitPack = true;
                 }
 

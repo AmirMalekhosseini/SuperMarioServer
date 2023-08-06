@@ -6,8 +6,9 @@ import Model.NetworkCommunication.Message.Message;
 import MyProject.MyProject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class GameRequestHandler implements MessageHandler{
+public class GameRequestHandler implements MessageHandler {
 
 
     @Override
@@ -16,6 +17,8 @@ public class GameRequestHandler implements MessageHandler{
         if (message instanceof GameRequestMessage) {
             GameRequestMessage requestMessage = (GameRequestMessage) message;
             String target = requestMessage.getTargetUser();
+            ArrayList<String> lobbyMembers = MyProject.getInstance().getDatabase().getLobbyMap().get(requestMessage.getLobbyName()).getMembers();
+            requestMessage.setMembers(lobbyMembers);
             // Target is Online:
             if (MyProject.getInstance().getDatabase().getClientHandlersMap().containsKey(target)) {
                 try {

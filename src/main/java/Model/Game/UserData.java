@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 
+
+import javax.persistence.*;
+
 public class UserData {
 
     @JsonIgnore
@@ -11,8 +14,8 @@ public class UserData {
     protected Score userHighScore = new Score();
     protected String username;
     private String password;
-    private int userCoinValue = 0;
-    private int userDiamondValue = 0;
+    private int userCoinValue = 100;
+    private int userDiamondValue = 100;
     private boolean isUserOnline;
     private boolean userChooseNormal_RedMario = true;
     private boolean userChooseCoin_YellowMario;
