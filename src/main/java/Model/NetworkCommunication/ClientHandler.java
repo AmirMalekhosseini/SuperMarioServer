@@ -1,6 +1,7 @@
 package Model.NetworkCommunication;
 
 import Controller.OnlineStorePack.StorePackSender;
+import Controller.Utils.HibernateUtils;
 import Controller.Utils.JsonUtils;
 import Model.Game.OnlineUser;
 import Model.NetworkCommunication.Message.InitMessage;
@@ -11,10 +12,13 @@ import Model.OnlineStorePack.Pack;
 import MyProject.MyProject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.hibernate.Session;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ClientHandler extends Thread {
@@ -65,13 +69,25 @@ public class ClientHandler extends Thread {
                     OnlineUser signedInUser = MyProject.getInstance().getDatabase().getAllUsers().get(username);
                     InitMessage initMessage = new InitMessage();
                     initMessage.setMessageType(MessageType.INIT_MESSAGE);
-                    initMessage.setUserChatScreens(signedInUser.getUserChatScreens());
-                    initMessage.setUserFriends((ArrayList<String>) signedInUser.getUserFriends());
-                    initMessage.setClientItems(signedInUser.getUserOnlineItems());
-                    initMessage.setUserData(MyProject.getInstance().getDatabase().getAllUsers().get(username).getUserData());
-                    sendMessage(initMessage);
+                    try (Session newSession = HibernateUtils.getInstance().getSessionFactory().openSession()) {
+                        // Fetch the userChatScreens collection
+                        signedInUser = newSession.get(OnlineUser.class, username);
+                        if (signedInUser != null) {
+                            initMessage.setUserChatScreens(signedInUser.getUserChatScreens());
 
-                    isSentInitPack = true;
+                            // Fetch the userFriends collection
+                            ArrayList<String> userFriendsList = new ArrayList<>(signedInUser.getUserFriends());
+                            initMessage.setUserFriends(userFriendsList);
+
+                            // Fetch the userOnlineItems collection
+                            initMessage.setClientItems(signedInUser.getUserOnlineItems());
+                        }
+                        initMessage.setUserData(MyProject.getInstance().getDatabase().getAllUsers().get(username).getUserData());
+                        sendMessage(initMessage);
+
+                        isSentInitPack = true;
+                    }
+
                 }
 
             }

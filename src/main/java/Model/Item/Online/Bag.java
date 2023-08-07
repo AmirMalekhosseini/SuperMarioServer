@@ -1,18 +1,30 @@
 package Model.Item.Online;
 
+import Model.Game.OnlineUser;
 import Model.Object.ObjectsInGame;
 import MyProject.MyProjectData;
 import javax.persistence.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table(name = "bags")
 public class Bag extends ObjectsInGame {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Transient
     private final BufferedImage background;
-    private ArrayList<String> bagItems = new ArrayList<>();
+    @ElementCollection
+    @CollectionTable(
+            name = "bag_items",
+            joinColumns = @JoinColumn(name = "id")
+    )
+    @Column(name = "items")
+    private List<String> bagItems = new ArrayList<>();
 
     private int x;
     private int y;
@@ -43,7 +55,7 @@ public class Bag extends ObjectsInGame {
     }
 
     public ArrayList<String> getBagItems() {
-        return bagItems;
+        return (ArrayList<String>) bagItems;
     }
 
     public void setBagItems(ArrayList<String> bagItems) {
@@ -96,5 +108,9 @@ public class Bag extends ObjectsInGame {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setBagItems(List<String> bagItems) {
+        this.bagItems = bagItems;
     }
 }

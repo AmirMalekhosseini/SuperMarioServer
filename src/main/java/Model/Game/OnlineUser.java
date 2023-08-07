@@ -2,7 +2,11 @@ package Model.Game;
 
 import Model.Item.Online.Bag;
 import Model.OnlineChat.UserChat;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +22,7 @@ public class OnlineUser {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "username")
     private UserData userData;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
             name = "user_online_items",
             joinColumns = @JoinColumn(name = "username")
@@ -29,16 +33,22 @@ public class OnlineUser {
     private Map<String, Integer> userOnlineItems;
     @Transient
     private Map<String, ArrayList<UserChat>> userChatScreens;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(
             name = "user_friends",
             joinColumns = @JoinColumn(name = "username")
     )
     @Column(name = "friend_username")
     private List<String> userFriends;
-    @Transient
-    private ArrayList<Bag> userBags;
-    @Transient
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(
+            name = "user_bags",
+            joinColumns = @JoinColumn(name = "username")
+    )
+    @Column(name = "bags")
+    private List<Bag> userBags;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "active_bag_id")
     private Bag activeBag;
     private int level;
     private int activeBagIndex = -1;
@@ -82,7 +92,7 @@ public class OnlineUser {
     }
 
     public ArrayList<Bag> getUserBags() {
-        return userBags;
+        return new ArrayList<>(userBags);
     }
 
     public void setUserBags(ArrayList<Bag> userBags) {

@@ -1,6 +1,5 @@
 package MyProject;
 
-import Controller.OnlineStorePack.StorePackSender;
 
 public class MyProject {
 
