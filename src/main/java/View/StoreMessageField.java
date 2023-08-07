@@ -1,4 +1,4 @@
-package Model.Object;
+package View;
 
 import MyProject.MyProjectData;
 

@@ -2,18 +2,43 @@ package Model.Game;
 
 import Model.Item.Online.Bag;
 import Model.OnlineChat.UserChat;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+@Entity
+@Table(name = "online_user")
 public class OnlineUser {
 
+    @Id
+    @Column(name = "username")
     private String username;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "username")
     private UserData userData;
+    @ElementCollection
+    @CollectionTable(
+            name = "user_online_items",
+            joinColumns = @JoinColumn(name = "username")
+    )
+    @MapKeyColumn(name = "item_name")
+    @Column(name = "item_count")
     // String: Item Name. // Integer: Item Count. // Item: Online Weapon and Item
     private Map<String, Integer> userOnlineItems;
+    @Transient
     private Map<String, ArrayList<UserChat>> userChatScreens;
-    private ArrayList<String> userFriends;
+    @ElementCollection
+    @CollectionTable(
+            name = "user_friends",
+            joinColumns = @JoinColumn(name = "username")
+    )
+    @Column(name = "friend_username")
+    private List<String> userFriends;
+    @Transient
     private ArrayList<Bag> userBags;
+    @Transient
     private Bag activeBag;
     private int level;
     private int activeBagIndex = -1;
@@ -96,11 +121,11 @@ public class OnlineUser {
         this.userChatScreens = userChatScreens;
     }
 
-    public ArrayList<String> getUserFriends() {
+    public List<String> getUserFriends() {
         return userFriends;
     }
 
-    public void setUserFriends(ArrayList<String> userFriends) {
+    public void setUserFriends(List<String> userFriends) {
         this.userFriends = userFriends;
     }
 

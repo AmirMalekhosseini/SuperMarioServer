@@ -6,7 +6,6 @@ import Model.Item.Online.SpeedItem;
 import Model.Mario.Online.DamageBomb;
 import Model.Mario.Online.Hammer;
 import Model.Mario.Online.SpeedBomb;
-import Model.Object.StoreSubmitButton;
 import Model.OnlineStorePack.MultiPackButton;
 import MyProject.MyProjectData;
 

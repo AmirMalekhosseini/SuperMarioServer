@@ -91,8 +91,8 @@ public class OnlineShopMessageHandler implements MessageHandler {
 
         boolean isValid;
 
-        isValid = checkCount(shopMessage) && checkCount(shopMessage)
-                && checkCurrency(shopMessage) && checkLevel(shopMessage) && checkTime(shopMessage);
+        isValid = checkCount(shopMessage) && checkCurrency(shopMessage)
+                && checkLevel(shopMessage) && checkTime(shopMessage);
 
         System.out.println(isValid);
 

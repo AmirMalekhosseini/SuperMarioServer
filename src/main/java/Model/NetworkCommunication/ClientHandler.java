@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ClientHandler extends Thread {
@@ -65,7 +66,7 @@ public class ClientHandler extends Thread {
                     InitMessage initMessage = new InitMessage();
                     initMessage.setMessageType(MessageType.INIT_MESSAGE);
                     initMessage.setUserChatScreens(signedInUser.getUserChatScreens());
-                    initMessage.setUserFriends(signedInUser.getUserFriends());
+                    initMessage.setUserFriends((ArrayList<String>) signedInUser.getUserFriends());
                     initMessage.setClientItems(signedInUser.getUserOnlineItems());
                     initMessage.setUserData(MyProject.getInstance().getDatabase().getAllUsers().get(username).getUserData());
                     sendMessage(initMessage);

@@ -1,7 +1,7 @@
-package Model.Object;
+package View;
 
 import Controller.OnlineStorePack.StorePackCreator;
-import MyProject.MyProject;
+import Model.Object.PackItem;
 import MyProject.MyProjectData;
 
 import javax.swing.*;

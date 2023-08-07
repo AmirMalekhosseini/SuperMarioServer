@@ -1,17 +1,20 @@
 package Model.Game;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.ArrayList;
-
-
 import javax.persistence.*;
 
+@Entity
+@Table(name = "user_data")
 public class UserData {
 
     @JsonIgnore
+    @Transient
     protected ArrayList<Score> userScore = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "username")
     protected Score userHighScore = new Score();
+    @Id
     protected String username;
     private String password;
     private int userCoinValue = 100;

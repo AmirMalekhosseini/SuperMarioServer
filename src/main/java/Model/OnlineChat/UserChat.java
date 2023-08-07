@@ -1,6 +1,6 @@
 package Model.OnlineChat;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 
 public class UserChat {
 

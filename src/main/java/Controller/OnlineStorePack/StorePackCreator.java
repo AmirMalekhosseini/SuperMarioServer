@@ -9,7 +9,7 @@ import Model.Mario.Online.DamageBomb;
 import Model.Mario.Online.Hammer;
 import Model.Mario.Online.SpeedBomb;
 import Model.Object.PackItem;
-import Model.Object.StoreSubmitButton;
+import View.StoreSubmitButton;
 import Model.OnlineStorePack.Pack;
 import MyProject.MyProject;
 

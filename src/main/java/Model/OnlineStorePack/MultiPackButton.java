@@ -2,7 +2,7 @@ package Model.OnlineStorePack;
 
 import Model.Object.ObjectsInGame;
 import Model.Object.PackItem;
-import Model.Object.StoreSubmitButton;
+import View.StoreSubmitButton;
 import MyProject.MyProjectData;
 import javax.swing.*;
 import java.awt.*;

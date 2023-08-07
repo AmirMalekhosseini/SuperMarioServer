@@ -2,7 +2,6 @@ package Model.Item.Online;
 
 import Model.Object.ObjectsInGame;
 import MyProject.MyProjectData;
-
 import javax.persistence.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,6 +10,7 @@ import java.util.ArrayList;
 public class Bag extends ObjectsInGame {
 
     private Long id;
+    @Transient
     private final BufferedImage background;
     private ArrayList<String> bagItems = new ArrayList<>();
 
