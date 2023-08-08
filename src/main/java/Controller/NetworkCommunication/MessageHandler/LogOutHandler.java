@@ -31,12 +31,13 @@ public class LogOutHandler implements MessageHandler {
                     session.save(user);
                     session.getTransaction().commit();
                 } else {// User is Already in Database:
+                    System.out.println("already");
                     ArrayList<Bag> userBags = new ArrayList<>(user.getUserBags());
                     for (Bag bag : userBags) {
-                        session.update(bag);
+                        session.merge(bag);
                     }
                     session.beginTransaction();
-                    session.update(user);
+                    session.merge(user);
                     session.getTransaction().commit();
                 }
 

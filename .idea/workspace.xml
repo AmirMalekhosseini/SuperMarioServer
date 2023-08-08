@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35686079-aa68-48dc-9bb6-42b26fdacf29" name="Changes" comment="Complete Lobby Except Chat&#10;Complete ServerData">
+    <list default="true" id="35686079-aa68-48dc-9bb6-42b26fdacf29" name="Changes" comment="Complete Database Except UserChat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/LogOutHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/LogOutHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game/OnlineUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Game/OnlineUser.java" afterDir="false" />
@@ -149,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691176561612</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Complete Database Except UserChat">
+      <created>1691447986418</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1691447986418</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,6 +177,7 @@
     <MESSAGE value="Start to Push Project on Network" />
     <MESSAGE value="Complete Notification except Left Click" />
     <MESSAGE value="Complete Lobby Except Chat&#10;Complete ServerData" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete Lobby Except Chat&#10;Complete ServerData" />
+    <MESSAGE value="Complete Database Except UserChat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete Database Except UserChat" />
   </component>
 </project>

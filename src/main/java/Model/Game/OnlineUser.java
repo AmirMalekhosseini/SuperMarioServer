@@ -2,11 +2,7 @@ package Model.Game;
 
 import Model.Item.Online.Bag;
 import Model.OnlineChat.UserChat;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +18,7 @@ public class OnlineUser {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "username")
     private UserData userData;
-    @ElementCollection(fetch = FetchType.EAGER)
+    @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(
             name = "user_online_items",
             joinColumns = @JoinColumn(name = "username")
@@ -40,7 +36,7 @@ public class OnlineUser {
     )
     @Column(name = "friend_username")
     private List<String> userFriends;
-    @ElementCollection(fetch = FetchType.EAGER)
+    @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(
             name = "user_bags",
             joinColumns = @JoinColumn(name = "username")

@@ -3,6 +3,8 @@ package Model.Item.Online;
 import Model.Game.OnlineUser;
 import Model.Object.ObjectsInGame;
 import MyProject.MyProjectData;
+import org.hibernate.collection.internal.PersistentBag;
+
 import javax.persistence.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -18,7 +20,7 @@ public class Bag extends ObjectsInGame {
     private Long id;
     @Transient
     private final BufferedImage background;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
             name = "bag_items",
             joinColumns = @JoinColumn(name = "id")
@@ -54,12 +56,8 @@ public class Bag extends ObjectsInGame {
         graphics2D.drawImage(background, -0, -0, width, height, null);
     }
 
-    public ArrayList<String> getBagItems() {
-        return (ArrayList<String>) bagItems;
-    }
-
-    public void setBagItems(ArrayList<String> bagItems) {
-        this.bagItems = bagItems;
+    public List<String> getBagItems() {
+        return bagItems;
     }
 
     @Override

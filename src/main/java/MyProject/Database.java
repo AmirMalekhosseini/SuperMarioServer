@@ -5,6 +5,7 @@ import Controller.OnlineStorePack.StorePackCreator;
 import Controller.Utils.HibernateUtils;
 import Model.Game.Lobby;
 import Model.Game.OnlineUser;
+import Model.Item.Online.Bag;
 import Model.NetworkCommunication.ClientHandler;
 import Model.NetworkCommunication.Message.Message;
 import Model.NetworkCommunication.Message.MessageType;
@@ -58,6 +59,15 @@ public class Database {
 
             // Execute the query and get the list of OnlineUser objects
             List<OnlineUser> onlineUsers = query.list();
+
+            for (OnlineUser user : onlineUsers) {
+                ArrayList<String> userFriends = new ArrayList<>(user.getUserFriends());
+                user.setUserFriends(userFriends);
+                Map<String, Integer> userItems = new ConcurrentHashMap<>(user.getUserOnlineItems());
+                user.setUserOnlineItems(userItems);
+                ArrayList<Bag> userBags = new ArrayList<>(user.getUserBags());
+                user.setUserBags(userBags);
+            }
 
             session.getTransaction().commit();
             return onlineUsers;

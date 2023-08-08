@@ -1,7 +1,6 @@
 package Model.NetworkCommunication;
 
 import Controller.OnlineStorePack.StorePackSender;
-import Controller.Utils.HibernateUtils;
 import Controller.Utils.JsonUtils;
 import Model.Game.OnlineUser;
 import Model.NetworkCommunication.Message.InitMessage;
@@ -12,13 +11,10 @@ import Model.OnlineStorePack.Pack;
 import MyProject.MyProject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.hibernate.Session;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class ClientHandler extends Thread {
@@ -29,7 +25,7 @@ public class ClientHandler extends Thread {
     private final PrintWriter sender;
     private volatile String username = "";
     private volatile boolean isClientOnline;
-    private boolean isSentInitPack;
+    private boolean isSentInitData;
 
     public ClientHandler(Socket clientSocket) throws IOException {
 
@@ -60,33 +56,10 @@ public class ClientHandler extends Thread {
                 // Process the message based on its type
                 processMessage(receivedMessage);
 
-                // Send Init Pack:
-                if (!username.equals("") && !isSentInitPack) {
-                    for (Pack pack : MyProject.getInstance().getDatabase().getPacks()) {
-                        StorePackSender.getInstance().sendPack(pack);
-                    }
-                    // Send Init Data:
-                    OnlineUser signedInUser = MyProject.getInstance().getDatabase().getAllUsers().get(username);
-                    InitMessage initMessage = new InitMessage();
-                    initMessage.setMessageType(MessageType.INIT_MESSAGE);
-                    try (Session newSession = HibernateUtils.getInstance().getSessionFactory().openSession()) {
-                        // Fetch the userChatScreens collection
-                        signedInUser = newSession.get(OnlineUser.class, username);
-                        if (signedInUser != null) {
-                            initMessage.setUserChatScreens(signedInUser.getUserChatScreens());
-
-                            // Fetch the userFriends collection
-                            ArrayList<String> userFriendsList = new ArrayList<>(signedInUser.getUserFriends());
-                            initMessage.setUserFriends(userFriendsList);
-
-                            // Fetch the userOnlineItems collection
-                            initMessage.setClientItems(signedInUser.getUserOnlineItems());
-                        }
-                        initMessage.setUserData(MyProject.getInstance().getDatabase().getAllUsers().get(username).getUserData());
-                        sendMessage(initMessage);
-
-                        isSentInitPack = true;
-                    }
+                // Send Init Data:
+                if (!username.equals("") && !isSentInitData) {
+                    sendInitData();
+                    isSentInitData = true;
 
                 }
 
@@ -99,6 +72,25 @@ public class ClientHandler extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void sendInitData() throws IOException {
+
+        // Send Init Pack
+        for (Pack pack : MyProject.getInstance().getDatabase().getPacks()) {
+            StorePackSender.getInstance().sendPack(pack);
+        }
+
+        OnlineUser signedInUser = MyProject.getInstance().getDatabase().getAllUsers().get(username);
+        InitMessage initMessage = new InitMessage();
+        initMessage.setMessageType(MessageType.INIT_MESSAGE);
+        initMessage.setUserChatScreens(signedInUser.getUserChatScreens());
+        ArrayList<String> userFriendsList = new ArrayList<>(signedInUser.getUserFriends());
+        initMessage.setUserFriends(userFriendsList);
+        initMessage.setClientItems(signedInUser.getUserOnlineItems());
+        initMessage.setUserData(MyProject.getInstance().getDatabase().getAllUsers().get(username).getUserData());
+        sendMessage(initMessage);
+
     }
 
     // Method to process the received message based on its type
