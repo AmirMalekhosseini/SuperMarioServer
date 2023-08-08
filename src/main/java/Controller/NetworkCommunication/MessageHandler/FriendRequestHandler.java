@@ -16,17 +16,25 @@ public class FriendRequestHandler implements MessageHandler{
             if (!MyProject.getInstance().getDatabase().getAllUsers().containsKey(target)) {
                 return;
             }
-            // Target is Online:
-            if (MyProject.getInstance().getDatabase().getClientHandlersMap().containsKey(target)) {
-                try {
-                    MyProject.getInstance().getDatabase().getClientHandlersMap().get(target).sendMessage(requestMessage);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {// Target is Offline
-                MyProject.getInstance().getDatabase().getMessageQueueMap().get(target).add(requestMessage);
-            }
+            sendMessage(requestMessage);
         }
 
     }
+
+    private void sendMessage(FriendRequestMessage requestMessage) {
+
+        String target = requestMessage.getTargetUser();
+
+        // Target is Online:
+        if (MyProject.getInstance().getDatabase().getClientHandlersMap().containsKey(target)) {
+            try {
+                MyProject.getInstance().getDatabase().getClientHandlersMap().get(target).sendMessage(requestMessage);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {// Target is Offline
+            MyProject.getInstance().getDatabase().getMessageQueueMap().get(target).add(requestMessage);
+        }
+    }
+
 }

@@ -4,13 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35686079-aa68-48dc-9bb6-42b26fdacf29" name="Changes" comment="Complete Database Except UserChat">
+    <list default="true" id="35686079-aa68-48dc-9bb6-42b26fdacf29" name="Changes" comment="Start Making Block List">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Database/SaveData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Menu/ShopLogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/BlockMessageHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/RemoveLobbyMessageHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/BlockMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/RemoveLobbyMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/ChatMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/ChatMessageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/FriendRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/FriendRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/GameRequestAnswerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/GameRequestAnswerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/GameRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/GameRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/JoinLobbyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/JoinLobbyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/LobbyChatHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/LobbyChatHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/LogOutHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/LogOutHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/MessageHandlerCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/MessageHandlerCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/OnlineShopMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/OnlineShopMessageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/RemoveLobbyMemberHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/RemoveLobbyMemberHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/ShopMessageHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/SignInHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/NetworkCommunication/MessageHandler/SignInHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/OnlineStorePack/StorePackCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/OnlineStorePack/StorePackCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/OnlineStorePack/StorePackSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/OnlineStorePack/StorePackSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game/Lobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Game/Lobby.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game/OnlineUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Game/OnlineUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Item/Online/Bag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Item/Online/Bag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/MessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/NewItemMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/NewLobbyMemberMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/NewLobbyMemberMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/PackMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/NetworkCommunication/Message/PackMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MyProject/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MyProject/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MyProject/MyProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MyProject/MyProject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691447986418</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Start Making Block List">
+      <created>1691491835222</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1691491835222</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -178,6 +211,17 @@
     <MESSAGE value="Complete Notification except Left Click" />
     <MESSAGE value="Complete Lobby Except Chat&#10;Complete ServerData" />
     <MESSAGE value="Complete Database Except UserChat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete Database Except UserChat" />
+    <MESSAGE value="Start Making Block List" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start Making Block List" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="javax.persistence.PersistenceException" package="javax.persistence" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

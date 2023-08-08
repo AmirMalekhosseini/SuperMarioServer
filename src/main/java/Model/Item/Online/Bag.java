@@ -1,10 +1,7 @@
 package Model.Item.Online;
 
-import Model.Game.OnlineUser;
 import Model.Object.ObjectsInGame;
 import MyProject.MyProjectData;
-import org.hibernate.collection.internal.PersistentBag;
-
 import javax.persistence.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -28,10 +25,13 @@ public class Bag extends ObjectsInGame {
     @Column(name = "items")
     private List<String> bagItems = new ArrayList<>();
 
+    @Transient
     private int x;
+    @Transient
     private int y;
-
+    @Transient
     private int height = 80;
+    @Transient
     private int width = 80;
 
     public Bag(int x, int y) {

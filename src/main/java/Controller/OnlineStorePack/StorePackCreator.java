@@ -36,7 +36,7 @@ public class StorePackCreator {
         addPackItems(newPack, storeSubmitButton);
         newPack.setPackIndex(storeSubmitButton.getPackIndex());
         setPackToList(newPack);
-        StorePackSender.getInstance().sendPack(newPack);
+        StorePackSender.getInstance().sendPack(newPack, false);
 
     }
 

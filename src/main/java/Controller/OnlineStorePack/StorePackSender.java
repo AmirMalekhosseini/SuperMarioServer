@@ -21,10 +21,11 @@ public class StorePackSender {
         return sender;
     }
 
-    public void sendPack(Pack pack) {
+    public void sendPack(Pack pack, boolean isInitPack) {
 
         PackMessage packMessage = new PackMessage();
         packMessage.setMessageType(MessageType.PACK_MESSAGE);
+        packMessage.setInitPack(isInitPack);
         // Add Pack Items:
         for (int i = 0; i < pack.packItems.size(); i++) {
             packMessage.getPackItems().add(pack.packItems.get(i).getClass().getName());

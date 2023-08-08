@@ -4,10 +4,11 @@ import Model.NetworkCommunication.Message.ChatMessage;
 import Model.NetworkCommunication.Message.Message;
 import Model.OnlineChat.UserChat;
 import MyProject.MyProject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ChatMessageHandler implements MessageHandler{
+public class ChatMessageHandler implements MessageHandler {
     @Override
     public void handleMessage(Message message) {
 
@@ -16,16 +17,33 @@ public class ChatMessageHandler implements MessageHandler{
             String sender = chatMessage.getSenderUser();
             String receiver = chatMessage.getTargetUser();
             String messageContext = chatMessage.getContext();
-            addMessages(messageContext, sender, receiver);
-            if (MyProject.getInstance().getDatabase().getClientHandlersMap().containsKey(receiver)) {
-                try {
-                    MyProject.getInstance().getDatabase().getClientHandlersMap().get(receiver).sendMessage(chatMessage);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {// Target is Offline
-                MyProject.getInstance().getDatabase().getMessageQueueMap().get(receiver).add(chatMessage);
+            if (isBlock(sender, receiver)) {
+                return;
             }
+            addMessages(messageContext, sender, receiver);
+            sendMessage(chatMessage);
+        }
+
+    }
+
+    private boolean isBlock(String sender, String receiver) {
+        return MyProject.getInstance().getDatabase().getAllUsers().get(sender).getBlockList().contains(receiver) ||
+                MyProject.getInstance().getDatabase().getAllUsers().get(receiver).getBlockList().contains(sender);
+    }
+
+    private void sendMessage(ChatMessage chatMessage) {
+
+        String receiver = chatMessage.getTargetUser();
+
+        if (MyProject.getInstance().getDatabase().getClientHandlersMap().containsKey(receiver)) {
+            try {
+                MyProject.getInstance().getDatabase().getClientHandlersMap().get(receiver).sendMessage(chatMessage);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {// Target is Offline
+
+            MyProject.getInstance().getDatabase().getMessageQueueMap().get(receiver).add(chatMessage);
         }
 
     }

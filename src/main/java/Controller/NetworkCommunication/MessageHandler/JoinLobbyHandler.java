@@ -9,7 +9,7 @@ import MyProject.MyProject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class JoinLobbyHandler implements MessageHandler{
+public class JoinLobbyHandler implements MessageHandler {
 
 
     @Override
@@ -40,26 +40,34 @@ public class JoinLobbyHandler implements MessageHandler{
     private boolean isJoinValid(JoinLobbyMessage lobbyMessage) {
         String lobbyName = lobbyMessage.getLobbyName();
         String lobbyPassword = lobbyMessage.getLobbyPassword();
+        String newMember = lobbyMessage.getSenderUser();
 
         if (!MyProject.getInstance().getDatabase().getLobbyMap().containsKey(lobbyName)) {
             return false;
         }
 
-        return MyProject.getInstance().getDatabase().getLobbyMap().get(lobbyName).getLobbyPassword().equals(lobbyPassword);
+        return MyProject.getInstance().getDatabase().getLobbyMap().get(lobbyName).getLobbyPassword().equals(lobbyPassword) &&
+                !MyProject.getInstance().getDatabase().getLobbyMap().get(lobbyName).getBlacklist().contains(newMember);
     }
 
-    private void sendNewMemberMessage(String newUser,String lobbyName) {
+    private void sendNewMemberMessage(String newMember, String lobbyName) {
 
-        NewLobbyMemberMessage lobbyMemberMessage = new NewLobbyMemberMessage();
-        lobbyMemberMessage.setMessageType(MessageType.NEW_LOBBY_MEMBER);
-        lobbyMemberMessage.setNewMemberName(newUser);
         ArrayList<String> lobbyMembers = MyProject.getInstance().getDatabase().getLobbyMap().get(lobbyName).getMembers();
         // Send NewLobbyMemberMessage to all Lobby Members:
         for (String member : lobbyMembers) {
             // Continue if Server Wants to send it to himself:
-            if (member.equals(newUser)) {
+            if (member.equals(newMember)) {
                 continue;
             }
+
+            NewLobbyMemberMessage lobbyMemberMessage = new NewLobbyMemberMessage();
+            lobbyMemberMessage.setMessageType(MessageType.NEW_LOBBY_MEMBER);
+            lobbyMemberMessage.setNewMemberName(newMember);
+
+            if (isNewMemberBlock(member, newMember)) {
+                lobbyMemberMessage.setMemberBlock(true);
+            }
+
             try {
                 MyProject.getInstance().getDatabase().getClientHandlersMap().get(member).sendMessage(lobbyMemberMessage);
             } catch (IOException e) {
@@ -67,6 +75,12 @@ public class JoinLobbyHandler implements MessageHandler{
             }
 
         }
+
+    }
+
+    private boolean isNewMemberBlock(String member, String newMember) {
+
+        return MyProject.getInstance().getDatabase().getAllUsers().get(member).getBlockList().contains(newMember);
 
     }
 

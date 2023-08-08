@@ -10,6 +10,7 @@ public class Lobby {
     private final String admin;
     private ArrayList<String> coAdmins;
     private ArrayList<String> members;
+    private ArrayList<String> blacklist;
 
     public Lobby(String lobbyName,String password) {
         this.lobbyPassword = password;
@@ -17,6 +18,7 @@ public class Lobby {
         this.admin = lobbyName;
         coAdmins = new ArrayList<>();
         members = new ArrayList<>();
+        blacklist = new ArrayList<>();
     }
 
     public String getLobbyName() {
@@ -45,5 +47,13 @@ public class Lobby {
 
     public String getLobbyPassword() {
         return lobbyPassword;
+    }
+
+    public ArrayList<String> getBlacklist() {
+        return blacklist;
+    }
+
+    public void setBlacklist(ArrayList<String> blacklist) {
+        this.blacklist = blacklist;
     }
 }

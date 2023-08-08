@@ -20,6 +20,7 @@ public class SignInHandler implements MessageHandler {
     public void handleMessage(Message message) {
         if (message instanceof SignInMessage) {
 
+            boolean isSignValid = false;
             SignInMessage signInMessage = (SignInMessage) message;
             ClientHandler handler = MyProject.getInstance().getDatabase().getClientHandlersMap().get("");
             if (usernameLogic.signInUser(signInMessage.getUsername())) {
@@ -28,6 +29,7 @@ public class SignInHandler implements MessageHandler {
                     signInMessage.setPasswordOK(true);
                     // Set ClientHandler
 
+                    isSignValid = true;
                     handler.setUsername(signInMessage.getUsername());
                     MyProject.getInstance().getDatabase().getClientHandlersMap().remove("");
                     MyProject.getInstance().getDatabase().getClientHandlersMap().put(signInMessage.getUsername(), handler);
@@ -42,10 +44,26 @@ public class SignInHandler implements MessageHandler {
             // Send SignInMessage Back.
             try {
                 handler.sendMessage(signInMessage);
-            } catch (IOException e) {
+
+                // Send Missed Messages
+                if (isSignValid) {
+                    sendInitMessages(signInMessage.getUsername(), handler);
+                }
+            } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
 
         }
+
     }
+
+    private void sendInitMessages(String username, ClientHandler userClientHandler) throws IOException, InterruptedException {
+
+        for (Message message : MyProject.getInstance().getDatabase().getMessageQueueMap().get(username)) {
+            userClientHandler.sendMessage(message);
+            Thread.sleep(500);
+        }
+
+    }
+
 }

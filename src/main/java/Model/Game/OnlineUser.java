@@ -38,6 +38,13 @@ public class OnlineUser {
     private List<String> userFriends;
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(
+            name = "user_block_list",
+            joinColumns = @JoinColumn(name = "username")
+    )
+    @Column(name = "block_user")
+    private List<String> blockList;
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(
             name = "user_bags",
             joinColumns = @JoinColumn(name = "username")
     )
@@ -54,6 +61,7 @@ public class OnlineUser {
         userOnlineItems = new ConcurrentHashMap<>();
         userChatScreens = new ConcurrentHashMap<>();
         userFriends = new ArrayList<>();
+        blockList = new ArrayList<>();
         userBags = new ArrayList<>(3);
         for (int i = 0; i < 3; i++) {
             Bag bag = new Bag();
@@ -133,6 +141,14 @@ public class OnlineUser {
 
     public void setUserFriends(List<String> userFriends) {
         this.userFriends = userFriends;
+    }
+
+    public List<String> getBlockList() {
+        return blockList;
+    }
+
+    public void setBlockList(List<String> blockList) {
+        this.blockList = blockList;
     }
 
     public int getLevel() {

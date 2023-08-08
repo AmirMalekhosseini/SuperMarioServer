@@ -11,6 +11,7 @@ import Model.OnlineStorePack.Pack;
 import MyProject.MyProject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -78,7 +79,7 @@ public class ClientHandler extends Thread {
 
         // Send Init Pack
         for (Pack pack : MyProject.getInstance().getDatabase().getPacks()) {
-            StorePackSender.getInstance().sendPack(pack);
+            StorePackSender.getInstance().sendPack(pack, true);
         }
 
         OnlineUser signedInUser = MyProject.getInstance().getDatabase().getAllUsers().get(username);

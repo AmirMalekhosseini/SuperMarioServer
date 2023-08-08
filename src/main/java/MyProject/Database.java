@@ -13,6 +13,7 @@ import Controller.NetworkCommunication.MessageHandler.MessageHandler;
 import Model.OnlineStorePack.Pack;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -44,8 +45,8 @@ public class Database {
 
         for (OnlineUser user : users) {
             allUsers.put(user.getUsername(), user);
-        }
 
+        }
 
     }
 
@@ -53,11 +54,10 @@ public class Database {
         try (Session session = HibernateUtils.getInstance().getSessionFactory().getCurrentSession()) {
             session.beginTransaction();
 
-            // Create an HQL query to retrieve all OnlineUser objects from the database
+            // get all OnlineUser Objects from the Database
             String hql = "FROM OnlineUser";
             Query<OnlineUser> query = session.createQuery(hql, OnlineUser.class);
 
-            // Execute the query and get the list of OnlineUser objects
             List<OnlineUser> onlineUsers = query.list();
 
             for (OnlineUser user : onlineUsers) {
@@ -67,6 +67,8 @@ public class Database {
                 user.setUserOnlineItems(userItems);
                 ArrayList<Bag> userBags = new ArrayList<>(user.getUserBags());
                 user.setUserBags(userBags);
+                List<String> blockList = new ArrayList<>(user.getBlockList());
+                user.setBlockList(blockList);
             }
 
             session.getTransaction().commit();

@@ -9,7 +9,7 @@ import MyProject.MyProject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class GameRequestAnswerHandler implements MessageHandler{
+public class GameRequestAnswerHandler implements MessageHandler {
 
 
     @Override
@@ -20,9 +20,7 @@ public class GameRequestAnswerHandler implements MessageHandler{
             boolean answer = requestAnswer.isAnswer();
             if (answer) {// Game Request Accepted
                 MyProject.getInstance().getDatabase().getLobbyMap().get(requestAnswer.getLobbyName()).getMembers().add(requestAnswer.getSenderUser());
-                NewLobbyMemberMessage lobbyMemberMessage = new NewLobbyMemberMessage();
-                lobbyMemberMessage.setMessageType(MessageType.NEW_LOBBY_MEMBER);
-                lobbyMemberMessage.setNewMemberName(requestAnswer.getSenderUser());
+
                 ArrayList<String> lobbyMembers = MyProject.getInstance().getDatabase().getLobbyMap().get(requestAnswer.getLobbyName()).getMembers();
                 // Send NewLobbyMemberMessage to all Lobby Members:
                 for (String member : lobbyMembers) {
@@ -30,6 +28,15 @@ public class GameRequestAnswerHandler implements MessageHandler{
                     if (member.equals(requestAnswer.getSenderUser())) {
                         continue;
                     }
+
+                    NewLobbyMemberMessage lobbyMemberMessage = new NewLobbyMemberMessage();
+                    lobbyMemberMessage.setMessageType(MessageType.NEW_LOBBY_MEMBER);
+                    lobbyMemberMessage.setNewMemberName(requestAnswer.getSenderUser());
+
+                    if (isNewMemberBlock(member, requestAnswer.getSenderUser())) {
+                        lobbyMemberMessage.setMemberBlock(true);
+                    }
+
                     try {
                         MyProject.getInstance().getDatabase().getClientHandlersMap().get(member).sendMessage(lobbyMemberMessage);
                     } catch (IOException e) {
@@ -41,4 +48,11 @@ public class GameRequestAnswerHandler implements MessageHandler{
         }
 
     }
+
+    private boolean isNewMemberBlock(String member, String newMember) {
+
+        return MyProject.getInstance().getDatabase().getAllUsers().get(member).getBlockList().contains(newMember);
+
+    }
+
 }

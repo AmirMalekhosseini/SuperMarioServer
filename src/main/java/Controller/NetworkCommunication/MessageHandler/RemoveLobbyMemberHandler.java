@@ -32,6 +32,7 @@ public class RemoveLobbyMemberHandler implements MessageHandler {
                         throw new RuntimeException(e);
                     }
                     lobby.getMembers().remove(target);
+                    lobby.getBlacklist().add(target);
                 }
             } else {
                 try {
@@ -40,6 +41,7 @@ public class RemoveLobbyMemberHandler implements MessageHandler {
                     throw new RuntimeException(e);
                 }
                 lobby.getMembers().remove(target);
+                lobby.getBlacklist().add(target);
             }
 
         }

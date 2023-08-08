@@ -1,6 +1,8 @@
 package MyProject;
 
 
+import java.util.ArrayList;
+
 public class MyProject {
 
     private static MyProject myProject;
@@ -9,6 +11,9 @@ public class MyProject {
 
     private MyProject() {
         database = new Database();
+        for (String user : database.getAllUsers().keySet()) {
+            database.getMessageQueueMap().put(user, new ArrayList<>());
+        }
     }
 
     public static synchronized MyProject getInstance() {
